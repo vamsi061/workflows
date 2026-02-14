@@ -6,10 +6,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -2848,
-        448
+        -14832,
+        4032
       ],
-      "id": "86310878-3c7e-434e-8710-9b0573e8d9d6",
+      "id": "f5d84cca-6b4f-4889-b1b6-b42527f81e4d",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -65,10 +65,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1936,
-        1088
+        -14016,
+        4688
       ],
-      "id": "b917596d-da80-4f71-b8f8-0c0413b21b55",
+      "id": "7a145d9a-d884-45a1-bb52-4e111bd27cdd",
       "name": "Set Variables"
     },
     {
@@ -79,10 +79,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -2016,
-        1408
+        -14000,
+        4992
       ],
-      "id": "7dd14f2b-5f13-4e73-9c54-29ea5f0d434d",
+      "id": "994b0cfc-d9c7-4281-9698-8e385dabe861",
       "name": "Split Out"
     },
     {
@@ -92,10 +92,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1664,
-        1408
+        -13600,
+        4992
       ],
-      "id": "313cf8ea-bdc6-436b-baec-b5b1fb687a7f",
+      "id": "589d8a58-a2ee-45e7-8718-3b628b364036",
       "name": "Create Array with Videos"
     },
     {
@@ -106,10 +106,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        -1408,
-        1088
+        -13392,
+        4672
       ],
-      "id": "1c059b64-ca09-406f-b4f0-e8d3a6d653c7",
+      "id": "65277cb7-d901-438e-af0d-1953fc4dad45",
       "name": "Split Items"
     },
     {
@@ -119,10 +119,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -752,
-        1088
+        -12736,
+        4672
       ],
-      "id": "d99ea8a9-c5b2-4db5-83c9-43b98a6ed8f1",
+      "id": "73512f20-7900-4114-8ed8-b7b6abcfd033",
       "name": "Build Video Array"
     },
     {
@@ -134,11 +134,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2288,
-        992
+        -14272,
+        4576
       ],
       "typeVersion": 1,
-      "id": "999368c9-1020-40e5-9e05-726d44e5a5ae",
+      "id": "1401660a-bcd3-4946-b807-0d5dcdec2138",
       "name": "Sticky Note"
     },
     {
@@ -168,10 +168,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1840,
-        1408
+        -13824,
+        4992
       ],
-      "id": "ff3ce91e-b591-4ecc-8d44-043ee15d5b75",
+      "id": "4d5e908d-ec8e-4d42-9d7e-1abb884d3190",
       "name": "Generate Video"
     },
     {
@@ -183,11 +183,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2288,
-        1312
+        -14272,
+        4896
       ],
       "typeVersion": 1,
-      "id": "6fc32afc-a516-421b-8016-2db0713dd158",
+      "id": "026ffb3e-dca4-42e2-bec2-b2cd447cf0c8",
       "name": "Sticky Note1"
     },
     {
@@ -197,10 +197,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1712,
-        1088
+        -13616,
+        4688
       ],
-      "id": "daeccff0-71f4-42cb-8d76-ad3b378de68f",
+      "id": "7ca6b092-faf5-4dc9-8e0d-68650d11bb4f",
       "name": "Build Faceless Array"
     },
     {
@@ -212,11 +212,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1680,
-        992
+        -13664,
+        4576
       ],
       "typeVersion": 1,
-      "id": "b4618d95-f1f6-4888-b9cb-f1d34113886f",
+      "id": "a10cf22f-b4c8-4044-b820-15fed9df8e1c",
       "name": "Sticky Note2"
     },
     {
@@ -228,11 +228,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1680,
-        1312
+        -13664,
+        4896
       ],
       "typeVersion": 1,
-      "id": "ab15f3e8-6b52-4774-84d4-38f456e62b13",
+      "id": "a3c91dee-ba13-4286-b8f5-82f290022f0c",
       "name": "Sticky Note3"
     },
     {
@@ -244,11 +244,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1072,
-        992
+        -13056,
+        4576
       ],
       "typeVersion": 1,
-      "id": "d75ac071-f3e6-4078-9b97-d804a0962af3",
+      "id": "fa8899b4-957a-46e2-9ec2-61bc0781e217",
       "name": "Sticky Note4"
     },
     {
@@ -276,10 +276,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -528,
-        1088
+        -12512,
+        4672
       ],
-      "id": "6e3a7fb2-b071-4d15-b23c-94adb4b2ef3e",
+      "id": "ffbafb02-4728-4e77-bf31-ee97c38e6444",
       "name": "Concatenate Video"
     },
     {
@@ -303,10 +303,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1344,
-        1408
+        -13328,
+        4992
       ],
-      "id": "1323397a-df59-4545-b856-b2d047ff4f6e",
+      "id": "9a767438-4b45-41a3-a441-0d550e71669e",
       "name": "Trim Video"
     },
     {
@@ -318,11 +318,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1072,
-        1312
+        -13056,
+        4896
       ],
       "typeVersion": 1,
-      "id": "0223d316-28e3-4d69-8205-fbde6753eb5a",
+      "id": "3559ac03-120b-4f0c-bf6d-efb9e98089bd",
       "name": "Sticky Note5"
     },
     {
@@ -346,10 +346,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1216,
-        1088
+        -13200,
+        4672
       ],
-      "id": "8bf89c9b-b10a-4bb2-865d-43029097eebb",
+      "id": "49a3f4c3-d9b4-49f0-893a-7ee07e6f0c67",
       "name": "Get Audio Metadata"
     },
     {
@@ -379,10 +379,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -656,
-        1408
+        -12640,
+        4992
       ],
-      "id": "9f86c3fb-bfd8-475a-98fa-fa7f6be1fe37",
+      "id": "bc41b44d-2fef-47e5-874f-d7f40c5182f6",
       "name": "Caption Video"
     },
     {
@@ -410,10 +410,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -976,
-        1408
+        -12960,
+        4992
       ],
-      "id": "35952232-5d15-443e-bfd7-8ee2d240bcf9",
+      "id": "db44e32e-253b-48a5-abf2-bd12979400bb",
       "name": "Combine Audio + Video"
     },
     {
@@ -433,10 +433,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        -2352,
-        384
+        -14336,
+        3968
       ],
-      "id": "e0b1be7d-f928-4a11-ae18-8bbeb3f3cdb8",
+      "id": "5b3412df-3c7a-49dd-98eb-79e502b66712",
       "name": "Basic LLM Chain"
     },
     {
@@ -446,10 +446,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        -2080,
-        560
+        -14064,
+        4144
       ],
-      "id": "91cf3fec-7660-433e-ba6d-ce916faf1e2b",
+      "id": "6e584e57-f521-4d47-a975-2e6b280b24cf",
       "name": "Structured Output Parser"
     },
     {
@@ -471,16 +471,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "{\n  \"prompt\": \"A lone runner in the early morning, mid-stride on a quiet urban street, breath visible in the cold air, determined gaze fixed ahead, shadows stretching long behind them. Black & White\",\n\"model\":\"img4\",\n  \"num_images\": 1,\n  \"enable_safety_checker\": true,\n  \"output_format\": \"jpeg\",\n  \"safety_tolerance\": \"2\",\n  \"aspect_ratio\": \"9:16\"\n}",
+        "jsonBody": "={\n  \"prompt\": \"{{ $json.image_script }}\",\n\"model\":\"img4\",\n  \"num_images\": 1,\n  \"enable_safety_checker\": true,\n  \"output_format\": \"jpeg\",\n  \"safety_tolerance\": \"2\",\n  \"aspect_ratio\": \"9:16\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -1152,
-        304
+        -13136,
+        3888
       ],
-      "id": "9dff8d83-b3ac-494b-996d-fffbd7d07423",
+      "id": "fbb55ee1-8bbc-4f9d-acab-dd763e741418",
       "name": "Image Gen"
     },
     {
@@ -512,10 +512,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1744,
-        368
+        -13728,
+        3952
       ],
-      "id": "6241e894-6341-415f-9b1f-dcf36f27e603",
+      "id": "8afab730-5334-4fb3-9b5d-6347c8d646b0",
       "name": "Image Scripts"
     },
     {
@@ -547,10 +547,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1744,
-        544
+        -13728,
+        4128
       ],
-      "id": "05aa715f-905c-4f06-9a66-c4b68eac5f7e",
+      "id": "2367f8ad-d24b-4749-9cf6-3aad7d67ed36",
       "name": "Audio Scripts"
     },
     {
@@ -560,10 +560,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1552,
-        544
+        -13536,
+        4128
       ],
-      "id": "29714a5d-7e57-4fbe-bd2e-3946038793b6",
+      "id": "8747f95b-3ad8-40b1-bc7b-e2bd38eeeedc",
       "name": "Code2"
     },
     {
@@ -573,10 +573,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1520,
-        368
+        -13504,
+        3952
       ],
-      "id": "7c97f9ea-4c2c-4091-b0d3-25f43d3f05c9",
+      "id": "76b56df7-f67a-482f-9625-da194d30717c",
       "name": "Code3"
     },
     {
@@ -589,10 +589,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -912,
-        304
+        -12896,
+        3888
       ],
-      "id": "6976ce4f-0b97-46a9-a83a-5d4867668488",
+      "id": "ec38a212-63de-4226-a140-57dd45281ec4",
       "name": "Image Get",
       "credentials": {
         "httpHeaderAuth": {
@@ -608,10 +608,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -672,
-        304
+        -12656,
+        3888
       ],
-      "id": "534c5ad6-78c0-4018-8b58-7523b4bc07a1",
+      "id": "3def5498-211d-411f-ae3e-9f405652f665",
       "name": "Code"
     },
     {
@@ -621,10 +621,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -400,
-        608
+        -12384,
+        4192
       ],
-      "id": "a9eb99c0-6c8f-4cc9-b064-58a40fea492e",
+      "id": "22e9419f-2cbe-4160-bb14-fcacb35d2ff6",
       "name": "Code1"
     },
     {
@@ -636,25 +636,25 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -16,
-        624
+        -12000,
+        4208
       ],
-      "id": "132e1104-aeda-42a7-a7c5-14b80cffdb59",
+      "id": "dfc69a4e-9b58-41c7-a1c6-ba12ec7f61d7",
       "name": "Merge"
     },
     {
       "parameters": {
         "content": "# Self-Hosted API for Video Creation, Merging, and Auto-Captions",
-        "height": 780,
-        "width": 2048
+        "height": 796,
+        "width": 2624
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2352,
-        864
+        -14336,
+        4432
       ],
-      "id": "8108049c-1afb-466c-adcf-0dfaefdce346",
+      "id": "86a1b495-f9a3-4198-a481-4a381a1535e1",
       "name": "Sticky Note6"
     },
     {
@@ -666,11 +666,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1264,
-        240
+        -13248,
+        3824
       ],
       "typeVersion": 1,
-      "id": "2862984d-60b4-4102-a5d2-3d58dbea3726",
+      "id": "33834e8d-fc58-44e9-ae4a-852c3cc6e0cd",
       "name": "Sticky Note7"
     },
     {
@@ -682,11 +682,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1264,
-        496
+        -13248,
+        4080
       ],
       "typeVersion": 1,
-      "id": "8b171c83-4721-46c6-ad53-4d08e3ec42c0",
+      "id": "ca67de5a-7766-499f-a629-fd87fb861891",
       "name": "Sticky Note8"
     },
     {
@@ -698,11 +698,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1824,
-        272
+        -13808,
+        3856
       ],
       "typeVersion": 1,
-      "id": "7352d2eb-f7db-4a7b-8c21-97cf269839bd",
+      "id": "20847e5b-c8b4-4684-8ff6-c57b8d0495ea",
       "name": "Sticky Note9"
     },
     {
@@ -714,11 +714,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2400,
-        304
+        -14384,
+        3888
       ],
       "typeVersion": 1,
-      "id": "69ab8ecd-346b-480e-b40e-e560458273f9",
+      "id": "d2650063-e4a3-420d-ac21-43939f4b6ef3",
       "name": "Sticky Note10"
     },
     {
@@ -730,10 +730,10 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -2624,
-        448
+        -14608,
+        4032
       ],
-      "id": "013be1e9-f65a-432c-b68e-d52cb14df975",
+      "id": "8307d26f-4398-492f-b419-374977da7635",
       "name": "Supabase Insert",
       "credentials": {
         "supabaseApi": {
@@ -755,10 +755,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -2320,
-        576
+        -14304,
+        4160
       ],
-      "id": "21d6b1b1-c1e3-42f7-9ccb-05f3be086456",
+      "id": "3b305a04-a24a-4e46-a8bd-1c589bb221df",
       "name": "AF4 Chat Model",
       "credentials": {
         "openAiApi": {
@@ -774,10 +774,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1040,
-        528
+        -13168,
+        4128
       ],
-      "id": "99d598c2-8580-4648-a26d-f373f9954d7a",
+      "id": "2f23883c-5b65-4328-bf81-e8df4880109f",
       "name": "Loop Over Items"
     },
     {
@@ -791,10 +791,10 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        -784,
-        512
+        -12768,
+        4096
       ],
-      "id": "d1cc224c-cf4b-41e5-9cb0-8ae0d889a2df",
+      "id": "aa19f9c3-21fd-45ee-853d-acc207bc46d3",
       "name": "Upload a file",
       "credentials": {
         "s3": {
@@ -820,10 +820,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -608,
-        528
+        -12592,
+        4112
       ],
-      "id": "729ddf05-fbd3-4dd2-919f-dc7333978ab1",
+      "id": "2bd457f4-ffd5-46ab-85ca-916c45dae322",
       "name": "Edit Fields"
     },
     {
@@ -853,11 +853,84 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        -896,
-        592
+        -12944,
+        4160
       ],
-      "id": "66dda942-f6f9-40b2-8f20-585264a7be23",
+      "id": "4629e31b-47de-42c5-9bf1-0305cb8dc91c",
       "name": "Kokoro TTS"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "bucketName": "nca-toolkit",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "bf7a9542-467b-4527-bc5d-4a4d18704b93",
+      "name": "List All S3 Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -12256,
+        4912
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current captioned video key from Caption Video node\nlet currentCaptionedKey = null;\ntry {\n  const captionUrl = $('Caption Video').first().json.response;\n  const match = captionUrl.match(/nca-toolkit\\/(.+)$/);\n  if (match) {\n    currentCaptionedKey = match[1];\n  }\n} catch (e) {\n  // Caption Video might not have response\n}\n\n// Get all S3 files and filter for deletion\nconst filesToDelete = [];\nconst items = $input.all();\n\nitems.forEach(item => {\n  const key = item.json.Key;\n  \n  // Skip if this is the current captioned video\n  if (currentCaptionedKey && key === currentCaptionedKey) {\n    return; // Keep this file\n  }\n  \n  // Delete all .mp4 and .mp3 files (old videos and audio)\n  if (key.endsWith('.mp4') || key.endsWith('.mp3')) {\n    filesToDelete.push({\n      json: { key }\n    });\n  }\n});\n\n// Also add the audio folder paths to delete (they should be empty after files are deleted)\nfor (let i = 1; i <= 3; i++) {\n  filesToDelete.push({\n    json: { key: 'audio/elevenlabs_' + i + '/' }\n  });\n}\n\nreturn filesToDelete;"
+      },
+      "id": "117e543c-bb5d-48de-8883-ba74056af401",
+      "name": "Filter Cleanup Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12112,
+        4752
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "bucketName": "nca-toolkit",
+        "fileKey": "={{ $json.key }}",
+        "options": {}
+      },
+      "id": "b41e633d-0fbd-4ee7-b23e-7ab2513fec51",
+      "name": "Delete Temp Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -11936,
+        4736
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Clean up files from S3",
+        "height": 412,
+        "width": 556,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -12288,
+        4656
+      ],
+      "typeVersion": 1,
+      "id": "8f7a8366-a997-4cb7-936b-8769dc41dab8",
+      "name": "Sticky Note11"
     }
   ],
   "pinData": {
@@ -871,11 +944,11 @@
     ]
   },
   "connections": {
-    "When clicking ‘Execute workflow’": {
+    "Caption Video": {
       "main": [
         [
           {
-            "node": "Supabase Insert",
+            "node": "List All S3 Files",
             "type": "main",
             "index": 0
           }
@@ -1144,6 +1217,13 @@
       "main": [
         [
           {
+            "node": "Upload a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
             "node": "Kokoro TTS",
             "type": "main",
             "index": 0
@@ -1155,7 +1235,7 @@
       "main": [
         [
           {
-            "node": "Upload a file",
+            "node": "Loop Over Items",
             "type": "main",
             "index": 0
           }
@@ -1194,6 +1274,39 @@
           }
         ]
       ]
+    },
+    "List All S3 Files": {
+      "main": [
+        [
+          {
+            "node": "Filter Cleanup Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Cleanup Files": {
+      "main": [
+        [
+          {
+            "node": "Delete Temp Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase Insert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -1201,7 +1314,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "3a8e180e-3ba7-4741-b7a9-f7bb64346b42",
+  "versionId": "a1d25ddc-de7d-4491-8787-c0d126422601",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
