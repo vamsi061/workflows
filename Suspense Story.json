@@ -1,0 +1,1689 @@
+{
+  "name": "Suspense Story",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -15200,
+        5248
+      ],
+      "id": "55ebc076-408c-4cc7-9227-72bbad514214",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ae3c4fa7-55f7-4d53-b6db-e5204061e699",
+              "name": "Image 1",
+              "value": "={{ $json.image_1.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "5849fa56-59e4-46f1-8d0d-7a72ab118c37",
+              "name": "Audio 1",
+              "value": "={{ $json.audio_1.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "7629501a-6b17-4842-8c0e-1cb8a867648a",
+              "name": "Image 2",
+              "value": "={{ $json.image_2.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "a250e441-e78d-468e-bc9a-3ad4e705f13e",
+              "name": "Audio 2",
+              "value": "={{ $json.audio_2.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "75b8133e-96a8-47ab-94db-b20b87ed66c9",
+              "name": "Image 3",
+              "value": "={{ $json.image_3.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "2f03412a-4a01-475c-aed3-980cf30524bb",
+              "name": "Audio 3",
+              "value": "={{ $json.audio_3.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "b010e365-dd40-499a-87cb-a68d62c9d5a2",
+              "name": "Image 4",
+              "value": "={{ $json.image_4.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "8a86d81e-d675-4331-932f-65004d9e7061",
+              "name": "Audio 4",
+              "value": "={{ $json.audio_4.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "18ad0861-1599-473d-841f-59a71553d561",
+              "name": "Image 5",
+              "value": "={{ $json.image_5.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "81ae4462-320b-4d81-a6de-c3b8ad9378d3",
+              "name": "Audio 5",
+              "value": "={{ $json.audio_5.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "c7903178-c814-4b2c-b532-9283118a652d",
+              "name": "Image 6",
+              "value": "={{ $json.image_6.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "98b8f1bd-15c6-4297-b0f8-5fde9daf9692",
+              "name": "Audio 6",
+              "value": "={{ $json.audio_6.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "117cdedf-70e1-4836-9bf6-2f510e7fa8d1",
+              "name": "Image 7",
+              "value": "={{ $json.image_7.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "bd2368b4-ff7a-4bed-a5c6-e8a8874fb752",
+              "name": "Audio 7",
+              "value": "={{ $json.audio_7.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "a52eb584-6087-4348-b812-c8d8d7ebac0e",
+              "name": "Image 8",
+              "value": "={{ $json.image_8.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "fa59c82e-29d0-423d-8fdc-532a459eb163",
+              "name": "Audio 8",
+              "value": "={{ $json.audio_8.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "aa9bb8af-5c12-4cc3-b682-c6e85357b363",
+              "name": "Image 9",
+              "value": "={{ $json.image_9.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "4b113903-ba72-42a5-90e8-6ed86b4061a9",
+              "name": "Audio 9",
+              "value": "={{ $json.audio_9.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "d05659f8-e8d0-4fe5-8595-4c5c7f283c18",
+              "name": "Image 10",
+              "value": "={{ $json.image_10.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "2c20b46c-89aa-4a6a-9d64-38effbcdbb01",
+              "name": "Audio 10",
+              "value": "={{ $json.audio_10.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "3a1ba150-6cde-4883-a337-3778301a6224",
+              "name": "Image 11",
+              "value": "={{ $json.image_11.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "1a6a5556-5429-421d-b076-be7400b42099",
+              "name": "Audio 11",
+              "value": "={{ $json.audio_11.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "109e905f-1fef-4ed2-be1b-326e8086208d",
+              "name": "Image 12",
+              "value": "={{ $json.image_12.data[0].url }}",
+              "type": "string"
+            },
+            {
+              "id": "f5df392d-cadb-4a5a-afba-c0df56ed6118",
+              "name": "Audio 12",
+              "value": "={{ $json.audio_12.file_url }}",
+              "type": "string"
+            },
+            {
+              "id": "f6118d24-c4f7-4b63-843c-113f4caacc53",
+              "name": "base_url",
+              "value": "http://host.docker.internal:8080",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -14224,
+        5984
+      ],
+      "id": "e2558968-e6a6-44a9-8fef-e761623124a3",
+      "name": "Set Variables"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "scenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -14208,
+        6288
+      ],
+      "id": "41a967d3-5c4c-4d75-bef5-182849924be4",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "jsCode": "const buildArrayScenes = $('Build Faceless Array').first().json.scenes;\nconst doneBranchItems = $input.all();\n\nconst updatedScenes = buildArrayScenes.map(scene => {\n\n  const matchingVideoItem = doneBranchItems.find(item =>\n    item.json?.id === scene.sceneId &&\n    typeof item.json.response === 'string' && \n    item.json.response.startsWith('http')\n  );\n\n  if (matchingVideoItem) {\n    return {\n      ...scene,\n      video: matchingVideoItem.json.response,\n    };\n  }\n\n  return scene;\n});\n\nreturn [\n  {\n    json: {\n      scenes: updatedScenes,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -13808,
+        6288
+      ],
+      "id": "e9115b44-7c75-461a-b47e-c3a5cc649039",
+      "name": "Create Array with Videos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "scenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -13600,
+        5968
+      ],
+      "id": "1db036dc-8bf2-491c-b0d4-c717c3f82ce6",
+      "name": "Split Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst videoUrls = items.map((item) => ({\n  video_url: item.json.response[0].file_url\n}));\n\nconst output = {\n  video_urls: videoUrls,\n  id: \"2323\"\n};\n\nreturn [\n  {\n    json: {\n      output: JSON.stringify(output)\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12944,
+        5968
+      ],
+      "id": "578677a0-0814-42b5-a28d-7d3939e48692",
+      "name": "Build Video Array"
+    },
+    {
+      "parameters": {
+        "content": "## Prepare Automation",
+        "height": 300,
+        "width": 580,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -14480,
+        5872
+      ],
+      "typeVersion": 1,
+      "id": "826a1e6e-f76b-4885-8a5e-08abc95a7df1",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/image/transform/video",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"image_url\":\"{{ $json.image }}\",\n    \"length\": 20,\n    \"frame_rate\": 25,\n    \"zoom_speed\": 6,\n    \"id\": \"{{ $('Split Out').item.json.sceneId }}\"\n} ",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -14032,
+        6288
+      ],
+      "id": "c735991d-40ce-4a67-b2a0-df3fda3ebaad",
+      "name": "Generate Video"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Videos",
+        "height": 300,
+        "width": 580,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -14480,
+        6192
+      ],
+      "typeVersion": 1,
+      "id": "ce387228-0a12-40cc-9299-7636a38d87c5",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst scenes = [];\n\nconst keys = Object.keys(item);\nconst sceneNumbers = new Set();\n\nkeys.forEach(key => {\n  const match = key.match(/(Audio|Image) (\\d+)/);\n  if (match) {\n    sceneNumbers.add(match[2]);\n  }\n});\n\nArray.from(sceneNumbers)\n  .sort((a, b) => Number(a) - Number(b))\n  .forEach(num => {\n    scenes.push({\n      audio: item[`Audio ${num}`] || null,\n      image: item[`Image ${num}`] || null,\n      video: null,\n      sceneId: `Scene ${num}`,\n    });\n  });\n\nreturn [\n  {\n    json: {\n      scenes,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -13824,
+        5984
+      ],
+      "id": "e47a0c4b-2c30-4c5f-b7c8-6d576ba95f51",
+      "name": "Build Faceless Array"
+    },
+    {
+      "parameters": {
+        "content": "## Get Video Metadata",
+        "height": 300,
+        "width": 580,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13872,
+        5872
+      ],
+      "typeVersion": 1,
+      "id": "ed9fdab7-8245-43c6-89ea-f6040be5b95c",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Trim Audio + Video",
+        "height": 300,
+        "width": 580,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13872,
+        6192
+      ],
+      "typeVersion": 1,
+      "id": "d1488b05-806e-4ce5-b73f-ef9b084c375c",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Final Merged Video",
+        "height": 300,
+        "width": 748,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13264,
+        5872
+      ],
+      "typeVersion": 1,
+      "id": "9d7e245b-b393-4e3f-9385-81e7e4b128e6",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/concatenate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.output }}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12720,
+        5968
+      ],
+      "id": "15126fbe-a49c-46b4-9f83-fe7ff9d6f967",
+      "name": "Concatenate Video"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/trim",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"video_url\": \"{{ $('Split Items').item.json.video }}\",\n    \"start\": \"00:00:00\",\n    \"end\": \"{{ $json.response.duration_formatted }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13536,
+        6288
+      ],
+      "id": "6798ba45-67a9-4521-be97-34ef8924d791",
+      "name": "Trim Video"
+    },
+    {
+      "parameters": {
+        "content": "## Caption Video",
+        "height": 300,
+        "width": 748,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13264,
+        6192
+      ],
+      "typeVersion": 1,
+      "id": "fa97c7ac-471c-4fde-9bbd-861ea6a0af40",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/media/metadata ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"media_url\": \"{{ $json.audio }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13408,
+        5968
+      ],
+      "id": "da1533c8-5556-4097-b5be-3d2222e9a31c",
+      "name": "Get Audio Metadata"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/caption",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_url\": \"{{ $json.response }}\",\n  \"settings\": {\n    \"line_color\": \"#FFFFFF\",\n    \"word_color\": \"#66ff74\",\n    \"all_caps\": false,\n    \"max_words_per_line\": 3,\n    \"font_size\": 60,\n    \"bold\": false,\n    \"italic\": false,\n    \"underline\": false,\n    \"strikeout\": false,\n    \"outline_width\": 3,\n    \"shadow_offset\": 4,\n    \"style\": \"highlight\",\n    \"font_family\": \"The Bold Font\",\n    \"position\": \"bottom_center\"\n  },\n  \"id\": \"gdrive-five\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -12848,
+        6288
+      ],
+      "id": "a3de7d36-364a-4821-ac32-6ef6bbf96eb7",
+      "name": "Caption Video"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/ffmpeg/compose",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inputs\": [\n    {\n      \"file_url\": \"{{ $json.response }}\"\n    },\n    {\n      \"file_url\": \"{{ $('Split Items').item.json.audio }}\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        {\n          \"option\": \"-map\",\n          \"argument\": \"0:v:0\"\n        },\n        {\n          \"option\": \"-map\",\n          \"argument\": \"1:a:0\"\n        },\n        {\n          \"option\": \"-c:v\",\n          \"argument\": \"copy\"\n        },\n        {\n          \"option\": \"-c:a\",\n          \"argument\": \"aac\"\n        },\n        {\n          \"option\": \"-shortest\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13168,
+        6288
+      ],
+      "id": "f6258646-9720-4750-a524-45de3446c028",
+      "name": "Combine Audio + Video"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.title }}",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=You are a professional cinematic suspense content creator and visual director. Your task is to transform a given suspense short story into highly detailed AI image generation prompts and immersive, high-retention narration audio segments for a short-form video under 60 seconds. Input provided: Title: {{$json.title}} and Story Script: {{$json.script}}. The story is already written with 5-second suspense beats (0–5s, 5–10s, etc.), and you must convert each beat into a corresponding cinematic visual scene and narration segment. The first 5 seconds must introduce immediate danger, impossibility, or a reality-breaking moment. Every 10–15 seconds must introduce a MAJOR escalation (not just a discovery but an active shift in danger, environment, or psychological stakes). The final 5 seconds must contain a powerful psychological twist that recontextualizes the story and provokes comments or debate. Avoid passive discoveries; the environment must feel active and responsive. Avoid repetitive sentence structures such as “I found” or “I heard.” Increase psychological horror over physical horror, focusing on dread, implication, and mental destabilization. For each 5-second segment, generate: (1) Image Prompt – a highly detailed, cinematic, visually rich AI image generation prompt with dark, atmospheric, suspenseful tone, dramatic lighting (moody shadows, volumetric light, practical lighting, fog, low-key lighting), strong environmental storytelling, clear body language, tension, and camera framing using wide shot or mid-shot only (no close-ups unless absolutely necessary for extreme horror impact), maximum of two characters in the entire story, strict visual consistency across scenes, no cartoonish or fantasy styling unless required by the story, and end each prompt with “Cinematic, ultra-detailed, realistic, 9:16 aspect ratio”; (2) Audio Narration Text – rewrite the exact suspense beat into a highly engaging, emotionally controlled, immersive cinematic voice-over line optimized for strong TTS delivery, using dynamic pacing, subtle dramatic pauses with “…”, tonal intensity shifts, and rhythmic sentence variation while remaining faithful to the original script and not adding new story elements. Total narration must remain under 60 seconds, tension must escalate continuously, each scene must visually progress the suspense, no new characters may be introduced, do not summarize, do not explain, do not include emojis or hashtags, and output must be clean JSON only using the required format with image_1 through image_12 and audio_1 through audio_12 (or fewer if the story has fewer beats), ensuring every image directly represents its corresponding suspense line and the overall result is dark, cinematic, psychologically intense, and optimized for viral retention.\n\nOutput Format (JSON): \n{\n   \"image_1\":\"...\",\n   \"image_2\":\"...\",\n   \"image_3\":\"...\",\n   \"image_4\":\"...\",\n   \"image_5\":\"...\",\n   \"image_6\":\"...\",\n   \"image_7\":\"...\",\n   \"image_8\":\"...\",\n   \"image_9\":\"...\",\n   \"image_10\":\"...\",\n   \"image_11\":\"...\",\n   \"image_12\":\"...\",\n   \"audio_1\":\"...\",\n   \"audio_2\":\"...\",\n   \"audio_3\":\"...\",\n   \"audio_4\":\"...\",\n   \"audio_5\":\"...\",\n   \"audio_6\":\"...\",\n   \"audio_7\":\"...\",\n   \"audio_8\":\"...\",\n   \"audio_9\":\"...\",\n   \"audio_10\":\"...\",\n   \"audio_11\":\"...\",\n   \"audio_12\":\"...\"\n}\n"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -14512,
+        5264
+      ],
+      "id": "ad9ca7dc-d4a6-4270-80bd-606e4e2d1e67",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n   \"image_1\":\"...\",\n   \"image_2\":\"...\",\n   \"image_3\":\"...\",\n   \"image_4\":\"...\",\n   \"image_5\":\"...\",\n   \"image_6\":\"...\",\n   \"image_7\":\"...\",\n   \"image_8\":\"...\",\n   \"image_9\":\"...\",\n   \"image_10\":\"...\",\n   \"image_11\":\"...\",\n   \"image_12\":\"...\",\n   \"audio_1\":\"...\",\n   \"audio_2\":\"...\",\n   \"audio_3\":\"...\",\n   \"audio_4\":\"...\",\n   \"audio_5\":\"...\",\n   \"audio_6\":\"...\",\n   \"audio_7\":\"...\",\n   \"audio_8\":\"...\",\n   \"audio_9\":\"...\",\n   \"audio_10\":\"...\",\n   \"audio_11\":\"...\",\n   \"audio_12\":\"...\"\n}\n"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -14272,
+        5440
+      ],
+      "id": "7641aaef-754e-4bb3-b5c7-029f289e5124",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.infip.pro/v1/images/generations",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer infip-5adef402"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"prompt\": \"{{ $json.image_script }}\",\n\"model\":\"img4\",\n  \"num_images\": 1,\n  \"enable_safety_checker\": true,\n  \"output_format\": \"jpeg\",\n  \"safety_tolerance\": \"2\",\n  \"aspect_ratio\": \"9:16\"\n}",
+        "options": {
+          "redirect": {},
+          "timeout": 120000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13344,
+        5184
+      ],
+      "id": "9eba1d83-f53c-4231-b278-eafb0e814080",
+      "name": "Image Gen"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ee9d9198-73be-4b18-8178-43bd88dc7411",
+              "name": "image_1",
+              "value": "={{ $json.output.image_1 }}",
+              "type": "string"
+            },
+            {
+              "id": "865fe843-de47-45f4-b983-151249e86612",
+              "name": "image_2",
+              "value": "={{ $json.output.image_2 }}",
+              "type": "string"
+            },
+            {
+              "id": "aeb27b33-e301-43f6-9815-b4211f327892",
+              "name": "image_3",
+              "value": "={{ $json.output.image_3 }}",
+              "type": "string"
+            },
+            {
+              "id": "ad8fc94a-d371-47be-8551-f9eee8e22b84",
+              "name": "image_4",
+              "value": "={{ $json.output.image_4 }}",
+              "type": "string"
+            },
+            {
+              "id": "aaff4427-5e7b-481e-8351-60e69828a9e8",
+              "name": "image_5",
+              "value": "={{ $json.output.image_5 }}",
+              "type": "string"
+            },
+            {
+              "id": "6fea71e9-31a4-4565-bace-353649245692",
+              "name": "image_6",
+              "value": "={{ $json.output.image_6 }}",
+              "type": "string"
+            },
+            {
+              "id": "e0363a7d-1274-4869-b7c6-31de2aea7386",
+              "name": "image_7",
+              "value": "={{ $json.output.image_7 }}",
+              "type": "string"
+            },
+            {
+              "id": "c4a6fe67-d4da-40ef-9adb-d20d94c9b525",
+              "name": "image_8",
+              "value": "={{ $json.output.image_8 }}",
+              "type": "string"
+            },
+            {
+              "id": "6eeb496b-17be-4fe3-84a1-c90418097edf",
+              "name": "image_9",
+              "value": "={{ $json.output.image_9 }}",
+              "type": "string"
+            },
+            {
+              "id": "b9b46c8c-63e9-4d98-90be-5467bd70aec8",
+              "name": "image_10",
+              "value": "={{ $json.output.image_10 }}",
+              "type": "string"
+            },
+            {
+              "id": "b8d08505-6e3a-4e5d-bb32-bab5832b6228",
+              "name": "image_11",
+              "value": "={{ $json.output.image_11 }}",
+              "type": "string"
+            },
+            {
+              "id": "28f50b7e-238f-4c27-b8e3-e4d39d0b6759",
+              "name": "image_12",
+              "value": "={{ $json.output.image_12 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -13936,
+        5248
+      ],
+      "id": "42d506cd-a206-46ca-97d1-0cba1febb49a",
+      "name": "Image Scripts"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ee9d9198-73be-4b18-8178-43bd88dc7411",
+              "name": "audio_1",
+              "value": "={{ $json.output.audio_1 }}",
+              "type": "string"
+            },
+            {
+              "id": "aeb27b33-e301-43f6-9815-b4211f327892",
+              "name": "audio_2",
+              "value": "={{ $json.output.audio_2 }}",
+              "type": "string"
+            },
+            {
+              "id": "2b411a02-bcef-4b5b-bbac-ddb277c93ab4",
+              "name": "audio_3",
+              "value": "={{ $json.output.audio_3 }}",
+              "type": "string"
+            },
+            {
+              "id": "7e3762f0-a584-4fc3-ba65-0761485e504b",
+              "name": "audio_4",
+              "value": "={{ $json.output.audio_4 }}",
+              "type": "string"
+            },
+            {
+              "id": "fbd67bcf-299a-4675-b51b-2f3ef4a37fa4",
+              "name": "audio_5",
+              "value": "={{ $json.output.audio_5 }}",
+              "type": "string"
+            },
+            {
+              "id": "5f710f7a-b06f-4d29-8d2e-53d37b7073c1",
+              "name": "audio_6",
+              "value": "={{ $json.output.audio_6 }}",
+              "type": "string"
+            },
+            {
+              "id": "988f7361-1e96-4a8e-8afa-d19f71853dd4",
+              "name": "audio_7",
+              "value": "={{ $json.output.audio_7 }}",
+              "type": "string"
+            },
+            {
+              "id": "87b39376-e8f8-4dde-8ab3-190f19ffd632",
+              "name": "audio_8",
+              "value": "={{ $json.output.audio_8 }}",
+              "type": "string"
+            },
+            {
+              "id": "d74a482e-16df-492d-a69f-64af857ce317",
+              "name": "audio_9",
+              "value": "={{ $json.output.audio_9 }}",
+              "type": "string"
+            },
+            {
+              "id": "1ec40932-f6fa-41f3-b183-b2078bd2406d",
+              "name": "audio_10",
+              "value": "={{ $json.output.audio_10 }}",
+              "type": "string"
+            },
+            {
+              "id": "e99faf19-b66a-4504-bb90-b51180c71240",
+              "name": "audio_11",
+              "value": "={{ $json.output.audio_11 }}",
+              "type": "string"
+            },
+            {
+              "id": "ccd7a253-b5f8-4ed6-97f5-dd81c1bbc70d",
+              "name": "audio_12",
+              "value": "={{ $json.output.audio_12 }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -13936,
+        5424
+      ],
+      "id": "caf8eaf9-54f1-40a2-b228-3009d7cf8994",
+      "name": "Audio Scripts"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = [];\nconst inputItem = $input.first();\n\n// Loop from audio_1 to audio_12\nfor (let i = 1; i <= 12; i++) {\n  const key = `audio_${i}`;\n\n  if (inputItem.json[key]) {\n    items.push({\n      json: {\n        audio_script: inputItem.json[key],\n      }\n    });\n  }\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -13744,
+        5424
+      ],
+      "id": "c254c1c0-3bf8-49db-92f3-26d8ef63a09c",
+      "name": "Code2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = [];\nconst inputItem = $input.first();\n\n// Loop from image_1 to image_12\nfor (let i = 1; i <= 12; i++) {\n  const key = `image_${i}`;\n\n  if (inputItem.json[key]) {\n    items.push({\n      json: {\n        image_script: inputItem.json[key],\n      }\n    });\n  }\n}\n\nreturn items;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -13712,
+        5248
+      ],
+      "id": "62dac040-b13c-4fb5-a77b-3142b0b1563f",
+      "name": "Code3"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.data[0].url }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13104,
+        5184
+      ],
+      "id": "819eff55-1bde-41d5-87a0-5521759f86e0",
+      "name": "Image Get",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "6krMQk0UfoUOVuJc",
+          "name": "Header Auth account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const combinedItem = {\n  json: {}\n};\n\n// Combine all items into a single item\n$input.all().forEach((item, index) => {\n  const imageNumber = index + 1;\n  combinedItem.json[`image_${imageNumber}`] = item.json.image_script || item.json;\n});\n\nreturn [combinedItem];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12864,
+        5184
+      ],
+      "id": "d84e51cc-f714-4b20-b4dc-966e02324f56",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "const combinedItem = {\n  json: {}\n};\n\n// Combine all items into a single item\n$input.all().forEach((item, index) => {\n  const audioNumber = index + 1;\n  combinedItem.json[`audio_${audioNumber}`] = item.json.audio_script || item.json;\n});\n\nreturn [combinedItem];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12592,
+        5488
+      ],
+      "id": "edea1b07-9aae-4b2d-bee3-1408b5ce5ae3",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -12208,
+        5504
+      ],
+      "id": "09ea608d-0bb2-49e2-95da-7a1ccb4265ed",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "# Self-Hosted API for Video Creation, Merging, and Auto-Captions",
+        "height": 796,
+        "width": 2624
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -14544,
+        5728
+      ],
+      "id": "2ba2f42a-e47c-4b8e-a19d-586f455989ad",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Images",
+        "height": 220,
+        "width": 780,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13456,
+        5120
+      ],
+      "typeVersion": 1,
+      "id": "5f80653d-406d-4226-9ad4-5dd649043837",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Audio ",
+        "height": 300,
+        "width": 1084,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -13456,
+        5376
+      ],
+      "typeVersion": 1,
+      "id": "67b63ba4-22c8-44b2-9826-2362ab216312",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Unbundle Images & Audio",
+        "height": 480,
+        "width": 500,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -14016,
+        5152
+      ],
+      "typeVersion": 1,
+      "id": "792f8e10-9cb7-46b4-a642-eeb0bce41747",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Script",
+        "height": 400,
+        "width": 500,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -14592,
+        5184
+      ],
+      "typeVersion": 1,
+      "id": "6f1195d6-1dd4-4f7d-8c89-32b0e7d09d3c",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "tableId": "Suspense_Stories",
+        "limit": 1
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -14816,
+        5328
+      ],
+      "id": "bd3fffe2-1d1a-4e50-a0e6-d1c040f7bc04",
+      "name": "Supabase Insert",
+      "credentials": {
+        "supabaseApi": {
+          "id": "v3sBLnLD71Mql8Vu",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "provider-3/deepseek-v3",
+          "mode": "list",
+          "cachedResultName": "provider-3/deepseek-v3"
+        },
+        "options": {
+          "maxTokens": 8192,
+          "temperature": 0.7,
+          "timeout": 600000,
+          "maxRetries": 2
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -14512,
+        5456
+      ],
+      "id": "0dc9320d-8c78-4594-a0e5-2abe2b03239d",
+      "name": "AF4 Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "SGX1Vgzz7Eqvr51E",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -13376,
+        5424
+      ],
+      "id": "475ea8ce-a3c2-4f25-b242-92093a456580",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "nca-toolkit",
+        "additionalFields": {
+          "parentFolderKey": "=audio/elevenlabs_{{$itemIndex + 1}}"
+        }
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -12976,
+        5392
+      ],
+      "id": "9876b344-d504-4d4d-a761-14bf58d9b2c9",
+      "name": "Upload a file",
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36039af3-7622-474f-9bdb-0766b870c12c",
+              "name": "file_url",
+              "value": "={{ \"http://host.docker.internal:9000/nca-toolkit/audio/elevenlabs_\" + ($itemIndex + 1) + \"/speech.mp3\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -12800,
+        5408
+      ],
+      "id": "253a93a9-66f1-4e7d-bdf2-2ccd9df9871b",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8880/v1/audio/speech",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"input\": \"{{ $('Code2').item.json.audio_script }}\",\n  \"voice\": \"af_bella\",\n  \"response_format\": \"mp3\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -13152,
+        5456
+      ],
+      "id": "8e0dc926-1a71-4910-835d-2170ede0c641",
+      "name": "Kokoro TTS"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "bucketName": "nca-toolkit",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "9c993eb2-d40e-4d13-bebb-a611026d1d10",
+      "name": "List All S3 Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -12464,
+        6208
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current captioned video key from Caption Video node\nlet currentCaptionedKey = null;\ntry {\n  const captionUrl = $('Caption Video').first().json.response;\n  const match = captionUrl.match(/nca-toolkit\\/(.+)$/);\n  if (match) {\n    currentCaptionedKey = match[1];\n  }\n} catch (e) {\n  // Caption Video might not have response\n}\n\n// Get all S3 files and filter for deletion\nconst filesToDelete = [];\nconst items = $input.all();\n\nitems.forEach(item => {\n  const key = item.json.Key;\n  \n  // Skip if this is the current captioned video\n  if (currentCaptionedKey && key === currentCaptionedKey) {\n    return; // Keep this file\n  }\n  \n  // Delete all .mp4 and .mp3 files (old videos and audio)\n  if (key.endsWith('.mp4') || key.endsWith('.mp3')) {\n    filesToDelete.push({\n      json: { key }\n    });\n  }\n});\n\n// Also add the audio folder paths to delete (they should be empty after files are deleted)\nfor (let i = 1; i <= 3; i++) {\n  filesToDelete.push({\n    json: { key: 'audio/elevenlabs_' + i + '/' }\n  });\n}\n\nreturn filesToDelete;"
+      },
+      "id": "56bf8f9e-f807-42f9-a9fb-a3f49af0f580",
+      "name": "Filter Cleanup Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -12320,
+        6048
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "bucketName": "nca-toolkit",
+        "fileKey": "={{ $json.key }}",
+        "options": {}
+      },
+      "id": "3c99f704-37a2-47eb-8446-c4386f1468af",
+      "name": "Delete Temp Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        -12144,
+        6032
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Clean up files from S3",
+        "height": 412,
+        "width": 556,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -12496,
+        5952
+      ],
+      "typeVersion": 1,
+      "id": "d7a4babf-5b6b-498d-ad7e-fe36d9975f28",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "tableId": "Suspense_Stories",
+        "fieldsUi": {
+          "fieldValues": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        -14192,
+        4912
+      ],
+      "id": "ccddbbb5-c487-4de2-9d1c-12743e391486",
+      "name": "Insert Stories",
+      "credentials": {
+        "supabaseApi": {
+          "id": "v3sBLnLD71Mql8Vu",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Generate Ideas",
+        "height": 400,
+        "width": 500,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -14576,
+        4752
+      ],
+      "typeVersion": 1,
+      "id": "f6ad19bb-c2f1-4b1a-a40c-19ada4f4b512",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "Generate 3 viral suspense short-video stories designed specifically for TikTok, Instagram Reels, and YouTube Shorts. Each story must include a highly curiosity-driven, shocking, click-triggering title and a script written in a single paragraph under 60 seconds. The very first sentence must introduce immediate danger, impossibility, or a reality-breaking moment — not just mystery, but active threat. A new suspense hook or escalation must occur approximately every 5 seconds to maintain extreme retention pacing. Every 10–15 seconds, introduce a MAJOR escalation (a shift in danger, environment, psychological stakes, or reality itself — not just a discovery). Avoid passive storytelling such as “I found” or “I heard”; instead, make the environment feel active, responsive, and threatening. Increase psychological horror over physical horror, focusing on dread, implication, mental destabilization, memory distortion, or reality shifts. Each story must include strictly only two characters (no more, no less), and tension must revolve tightly around them. The themes must be different for each story and must revolve around conspiracy theories, government cover-ups, secret experiments, unsolved disappearances, historical mysteries, strange sightings, hidden underground facilities, forbidden recordings, time anomalies, or reality-bending coincidences. The tension must escalate continuously without slowing down. The final 5 seconds must contain a powerful psychological twist that recontextualizes the entire story and provokes comments, debate, or theories. The ending must not feel closed — it must feel disturbing, unresolved, or mentally unsettling. Tone must be dark, cinematic, immersive, mysterious, and optimized for viral retention and strong voice narration delivery. Avoid clichés, avoid predictable horror tropes, and avoid repetitive sentence structures. Output format must be clean JSON only using this structure:\n{\n \"Title_1\": \"....\",\n \"Title_2\": \"....\",\n \"Title_3\": \"....\",\n \"Story_Script_1\": \"....\",\n \"Story_Script_2\": \"....\",\n \"Story_Script_3\": \"....\"\n }",
+        "hasOutputParser": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=Generate 3 viral suspense short-video stories designed specifically for TikTok, Instagram Reels, and YouTube Shorts. Each story must include a highly curiosity-driven, shocking, click-triggering title and a script written in a single paragraph under 60 seconds. The very first sentence must introduce immediate danger, impossibility, or a reality-breaking moment — not just mystery, but active threat. A new suspense hook or escalation must occur approximately every 5 seconds to maintain extreme retention pacing. Every 10–15 seconds, introduce a MAJOR escalation (a shift in danger, environment, psychological stakes, or reality itself — not just a discovery). Avoid passive storytelling such as “I found” or “I heard”; instead, make the environment feel active, responsive, and threatening. Increase psychological horror over physical horror, focusing on dread, implication, mental destabilization, memory distortion, or reality shifts. Each story must include strictly only two characters (no more, no less), and tension must revolve tightly around them. The themes must be different for each story and must revolve around conspiracy theories, government cover-ups, secret experiments, unsolved disappearances, historical mysteries, strange sightings, hidden underground facilities, forbidden recordings, time anomalies, or reality-bending coincidences. The tension must escalate continuously without slowing down. The final 5 seconds must contain a powerful psychological twist that recontextualizes the entire story and provokes comments, debate, or theories. The ending must not feel closed — it must feel disturbing, unresolved, or mentally unsettling. Tone must be dark, cinematic, immersive, mysterious, and optimized for viral retention and strong voice narration delivery. Avoid clichés, avoid predictable horror tropes, and avoid repetitive sentence structures. Output format must be clean JSON only using this structure:\n{\n \"Title_1\": \"....\",\n \"Title_2\": \"....\",\n \"Title_3\": \"....\",\n \"Story_Script_1\": \"....\",\n \"Story_Script_2\": \"....\",\n \"Story_Script_3\": \"....\"\n }"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -14496,
+        4832
+      ],
+      "id": "2219b8f0-9302-49fd-9713-0fd64578e3a3",
+      "name": "Basic LLM Chain1"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "provider-3/deepseek-v3",
+          "mode": "list",
+          "cachedResultName": "provider-3/deepseek-v3"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -14512,
+        5024
+      ],
+      "id": "40b106bf-94b6-4955-927f-9ca0a24a2061",
+      "name": "AF4 Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "SGX1Vgzz7Eqvr51E",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n \"Title_1\": \"....\",\n \"Title_2\": \"....\",\n \"Title_3\": \"....\",\n \"Story_Script_1\": \"....\",\n \"Story_Script_2\": \"....\",\n \"Story_Script_3\": \"....\"\n }"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -14352,
+        5008
+      ],
+      "id": "aa9be1bf-4ff6-4ad4-870d-10a725c4343d",
+      "name": "Structured Output Parser1"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Caption Video": {
+      "main": [
+        [
+          {
+            "node": "List All S3 Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Variables": {
+      "main": [
+        [
+          {
+            "node": "Build Faceless Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Array with Videos": {
+      "main": [
+        [
+          {
+            "node": "Split Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Items": {
+      "main": [
+        [
+          {
+            "node": "Get Audio Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Video Array": {
+      "main": [
+        [
+          {
+            "node": "Concatenate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Video": {
+      "main": [
+        [
+          {
+            "node": "Create Array with Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Faceless Array": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatenate Video": {
+      "main": [
+        [
+          {
+            "node": "Caption Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trim Video": {
+      "main": [
+        [
+          {
+            "node": "Combine Audio + Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Audio Metadata": {
+      "main": [
+        [
+          {
+            "node": "Trim Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Audio + Video": {
+      "main": [
+        [
+          {
+            "node": "Build Video Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Image Scripts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Audio Scripts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Scripts": {
+      "main": [
+        [
+          {
+            "node": "Code3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audio Scripts": {
+      "main": [
+        [
+          {
+            "node": "Code2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code3": {
+      "main": [
+        [
+          {
+            "node": "Image Gen",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Gen": {
+      "main": [
+        [
+          {
+            "node": "Image Get",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Image Get": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Set Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Insert": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AF4 Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Upload a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Kokoro TTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kokoro TTS": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Generate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a file": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List All S3 Files": {
+      "main": [
+        [
+          {
+            "node": "Filter Cleanup Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Cleanup Files": {
+      "main": [
+        [
+          {
+            "node": "Delete Temp Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Supabase Insert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AF4 Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "Basic LLM Chain1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain1": {
+      "main": [
+        [
+          {
+            "node": "Insert Stories",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "ae0bd83d-c3b5-42b3-90e4-354a5a73c3d0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
+  },
+  "id": "3X2jA5qTsFe7IuHc",
+  "tags": [
+    {
+      "updatedAt": "2026-01-20T09:44:21.813Z",
+      "createdAt": "2026-01-20T09:44:21.813Z",
+      "id": "d21Q8MpJ5Yhlo3yu",
+      "name": "youtube"
+    }
+  ]
+}
