@@ -6,10 +6,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -624,
-        496
+        704,
+        1216
       ],
-      "id": "53b682ad-2781-4175-be90-509d73a29e50",
+      "id": "98b676c4-d247-402a-886a-bd9fabaf27d0",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -179,10 +179,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        352,
-        1232
+        1680,
+        1952
       ],
-      "id": "2936e630-f260-4876-9021-dee0a5622bb0",
+      "id": "374c1187-fe8e-49ee-9816-b1702d7c616c",
       "name": "Set Variables"
     },
     {
@@ -193,10 +193,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        368,
-        1536
+        1696,
+        2256
       ],
-      "id": "02ebc0b3-3743-4357-958f-0a6a759d4536",
+      "id": "6467843f-de94-4dca-95c9-9711b7d74957",
       "name": "Split Out"
     },
     {
@@ -206,10 +206,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        768,
-        1536
+        2096,
+        2256
       ],
-      "id": "ff50e892-3877-4036-8285-95cd0dfed685",
+      "id": "253184ff-074c-473e-a976-50f4207c9c17",
       "name": "Create Array with Videos"
     },
     {
@@ -220,10 +220,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        976,
-        1216
+        2304,
+        1936
       ],
-      "id": "5a5caf80-941c-47a0-ae3b-40e7f6a5f04f",
+      "id": "6d3ca538-ece3-464f-a018-226c60f43315",
       "name": "Split Items"
     },
     {
@@ -233,10 +233,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1632,
-        1216
+        2960,
+        1936
       ],
-      "id": "2f1f2738-3b7d-423b-b710-9964fc0e1b69",
+      "id": "36e3b8c8-27e7-49cd-b527-2581d48a209f",
       "name": "Build Video Array"
     },
     {
@@ -248,11 +248,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        96,
-        1120
+        1424,
+        1840
       ],
       "typeVersion": 1,
-      "id": "f6e30854-bab2-4146-915b-1fc6f5e8f90c",
+      "id": "086e1e7e-1bdb-47d2-aae7-ada73e14363d",
       "name": "Sticky Note"
     },
     {
@@ -282,10 +282,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        544,
-        1536
+        1872,
+        2256
       ],
-      "id": "d06b0be8-dc82-4ead-ae13-9fe36dd36302",
+      "id": "75dd7524-0661-4c58-8e25-29bf9eae8d09",
       "name": "Generate Video"
     },
     {
@@ -297,11 +297,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        96,
-        1440
+        1424,
+        2160
       ],
       "typeVersion": 1,
-      "id": "e55daa0b-ec83-4c47-a7f2-c3621ab7cd68",
+      "id": "1dafdbb9-7d30-4da2-8d0b-e0a9191fbbd0",
       "name": "Sticky Note1"
     },
     {
@@ -311,10 +311,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        752,
-        1232
+        2080,
+        1952
       ],
-      "id": "07bebedb-bd55-4262-b160-85bb13a45030",
+      "id": "505e8bd7-a73b-4b25-8693-3f913bfe0157",
       "name": "Build Faceless Array"
     },
     {
@@ -326,11 +326,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        704,
-        1120
+        2032,
+        1840
       ],
       "typeVersion": 1,
-      "id": "ad7d35b2-4955-4ec9-950f-a62385bb9614",
+      "id": "195ae018-5856-44bb-bdb0-93ba2fc82748",
       "name": "Sticky Note2"
     },
     {
@@ -342,11 +342,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        704,
-        1440
+        2032,
+        2160
       ],
       "typeVersion": 1,
-      "id": "f1a67b19-a13f-47df-a2f0-2698ed7bb208",
+      "id": "3f9b5bfa-0031-4081-af31-410226fbc4e3",
       "name": "Sticky Note3"
     },
     {
@@ -358,11 +358,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1312,
-        1120
+        2640,
+        1840
       ],
       "typeVersion": 1,
-      "id": "eacaa5f7-708c-4ae5-a658-696dac5e9a66",
+      "id": "55c00c73-cba5-4ad4-ae2e-33aa52274762",
       "name": "Sticky Note4"
     },
     {
@@ -390,10 +390,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1856,
-        1216
+        3184,
+        1936
       ],
-      "id": "b9110d7e-a6e6-4b4f-a80a-61421f4096a9",
+      "id": "7d2161f4-0c95-48c5-8904-f57df479b427",
       "name": "Concatenate Video"
     },
     {
@@ -417,10 +417,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1040,
-        1536
+        2368,
+        2256
       ],
-      "id": "d5765526-ea12-460b-a56e-2421921cc4b4",
+      "id": "4a97bd9e-5ed3-48d6-b620-fd19ebcd5feb",
       "name": "Trim Video"
     },
     {
@@ -432,11 +432,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1312,
-        1440
+        2640,
+        2160
       ],
       "typeVersion": 1,
-      "id": "cac753f0-c363-4ca6-ab63-bb72e721ddf2",
+      "id": "959842a6-116d-478e-aa77-4e07e58847dc",
       "name": "Sticky Note5"
     },
     {
@@ -460,10 +460,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1168,
-        1216
+        2496,
+        1936
       ],
-      "id": "368bff61-dc2f-4695-9b6d-915b2023b8c6",
+      "id": "bef5069d-87ce-4838-b047-ac5d3b2aa6d3",
       "name": "Get Audio Metadata"
     },
     {
@@ -493,10 +493,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1728,
-        1536
+        3056,
+        2256
       ],
-      "id": "b0570229-77d0-4d52-bff0-5b94944e2d1c",
+      "id": "a0beee3f-f4e6-4e1c-a854-32f8db81c093",
       "name": "Caption Video"
     },
     {
@@ -524,10 +524,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1408,
-        1536
+        2736,
+        2256
       ],
-      "id": "e7f6c15f-74dd-4141-81b0-411dc48a124d",
+      "id": "0a1122c2-ca12-4312-b147-845965dd0055",
       "name": "Combine Audio + Video"
     },
     {
@@ -547,10 +547,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        64,
-        512
+        1392,
+        1232
       ],
-      "id": "5b8fc680-6476-42fb-90bd-74f332462705",
+      "id": "8fcdc13e-32b1-4457-92a5-8554c9d0201a",
       "name": "Basic LLM Chain"
     },
     {
@@ -560,10 +560,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        304,
-        688
+        1632,
+        1408
       ],
-      "id": "25f9933e-3b3d-4aba-98e4-4bad6f83ce19",
+      "id": "b973a769-052c-4a35-b471-fbb637adce79",
       "name": "Structured Output Parser"
     },
     {
@@ -594,10 +594,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1232,
-        432
+        2560,
+        1152
       ],
-      "id": "fe2026a0-fc5f-40da-9fa5-face73e3c9cd",
+      "id": "24461319-4e79-4296-b8ba-d73bdf35f6ca",
       "name": "Image Gen"
     },
     {
@@ -683,10 +683,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        640,
-        496
+        1968,
+        1216
       ],
-      "id": "4c67d896-0207-43a1-97ad-0e8718b7513e",
+      "id": "095e5353-2d4e-4996-86c0-ee17933fa266",
       "name": "Image Scripts"
     },
     {
@@ -772,10 +772,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        640,
-        656
+        1968,
+        1376
       ],
-      "id": "cf9c76e2-49e9-4a49-a0ed-7b31ea39a2c0",
+      "id": "3447fcc4-0345-49aa-bece-27ebe56e258c",
       "name": "Audio Scripts"
     },
     {
@@ -785,10 +785,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        832,
-        672
+        2160,
+        1392
       ],
-      "id": "931ab8e3-2eae-4661-af99-a388045ca93f",
+      "id": "7da1bb5a-dffc-4893-8290-21d59c545dc0",
       "name": "Code2"
     },
     {
@@ -798,10 +798,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        864,
-        496
+        2192,
+        1216
       ],
-      "id": "50bb71bd-cdba-464e-b2c4-2d7d61d7ab68",
+      "id": "19b23ecc-5319-4025-b17b-01dc695f40ed",
       "name": "Code3"
     },
     {
@@ -814,10 +814,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1472,
-        432
+        2800,
+        1152
       ],
-      "id": "98bc7009-6e11-4f45-a089-4bdbcc455ca7",
+      "id": "dc27f485-569a-4bf2-97b3-72ddcd154d74",
       "name": "Image Get",
       "credentials": {
         "httpHeaderAuth": {
@@ -833,10 +833,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1712,
-        432
+        3040,
+        1152
       ],
-      "id": "efd6f540-28c7-45f1-a540-96e2c03372bd",
+      "id": "aa383fd1-4775-4b97-8e06-cb1ba902bba3",
       "name": "Code"
     },
     {
@@ -846,10 +846,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1984,
-        736
+        3312,
+        1456
       ],
-      "id": "bd4824d4-6b43-498e-9487-1e0f2cb51537",
+      "id": "692626ba-39a7-4976-89f3-c999f7724c5d",
       "name": "Code1"
     },
     {
@@ -861,10 +861,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        2368,
-        752
+        3696,
+        1472
       ],
-      "id": "0b1298c1-469f-4529-8790-ec2e5edf57af",
+      "id": "b4554eb5-015c-43f6-8b7f-8e2b0cf102cc",
       "name": "Merge"
     },
     {
@@ -876,10 +876,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        32,
-        976
+        1360,
+        1696
       ],
-      "id": "3e14b224-15fd-42d7-bde1-76ffe5bd553d",
+      "id": "7e495467-4efb-460b-abe3-c7af6f4dc65e",
       "name": "Sticky Note6"
     },
     {
@@ -891,11 +891,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1120,
-        368
+        2448,
+        1088
       ],
       "typeVersion": 1,
-      "id": "ab500858-ad7a-4762-a2a8-8ba8af969ab5",
+      "id": "e7a2e4be-b31c-460b-8dcd-73118d1d5c1e",
       "name": "Sticky Note7"
     },
     {
@@ -907,11 +907,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1120,
-        624
+        2448,
+        1344
       ],
       "typeVersion": 1,
-      "id": "eecf49f1-ce97-4592-bcdd-e2d41d8632da",
+      "id": "008e58de-0afb-4b5f-afdb-8197b1fa8b64",
       "name": "Sticky Note8"
     },
     {
@@ -923,11 +923,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        560,
-        400
+        1888,
+        1120
       ],
       "typeVersion": 1,
-      "id": "e3afeb76-e7b5-4a08-b921-0f78efa12fe6",
+      "id": "8090a0f2-a358-47b2-b168-7cc78789b1b8",
       "name": "Sticky Note9"
     },
     {
@@ -939,11 +939,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -16,
-        432
+        1312,
+        1152
       ],
       "typeVersion": 1,
-      "id": "e1f6c288-2d8a-4a0f-a875-5092f393ae3e",
+      "id": "c60f3ca6-913e-460a-bf4f-57257cd84978",
       "name": "Sticky Note10"
     },
     {
@@ -957,10 +957,10 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -240,
-        576
+        1088,
+        1296
       ],
-      "id": "4ba9b47a-0472-4f91-937a-51aabc330afc",
+      "id": "cbaaca0e-abda-4d8e-a935-e0aa5e2246ba",
       "name": "Supabase Insert",
       "credentials": {
         "supabaseApi": {
@@ -987,10 +987,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        64,
-        704
+        1392,
+        1424
       ],
-      "id": "a9a967ed-3c1e-404e-9e8a-5b98df71dd41",
+      "id": "d61b9c12-8eef-49d1-b56a-a843ba8cd57a",
       "name": "AF4 Chat Model",
       "credentials": {
         "openAiApi": {
@@ -1006,10 +1006,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1200,
-        672
+        2528,
+        1392
       ],
-      "id": "a0846744-df29-4575-8080-4cc764953b3b",
+      "id": "dd12cb4d-ade4-4ddd-a861-67931433cd5f",
       "name": "Loop Over Items"
     },
     {
@@ -1023,10 +1023,10 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        1600,
-        640
+        2928,
+        1360
       ],
-      "id": "519aafe8-1f2e-49b3-a568-0205d377c6ec",
+      "id": "0d0f8c29-4e93-484a-a342-fe283f2ebfcf",
       "name": "Upload a file",
       "credentials": {
         "s3": {
@@ -1052,10 +1052,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1776,
-        656
+        3104,
+        1376
       ],
-      "id": "78158366-78f9-46ce-a43a-454b0fa9935c",
+      "id": "ba520c76-9742-41ea-9818-524b5711c816",
       "name": "Edit Fields"
     },
     {
@@ -1085,10 +1085,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1424,
-        704
+        2752,
+        1424
       ],
-      "id": "e1fdda8b-545e-4dbd-a82e-20ee262f26f8",
+      "id": "7ea30b90-91d5-441b-9064-2cfc97971dbd",
       "name": "Kokoro TTS"
     },
     {
@@ -1098,13 +1098,13 @@
         "returnAll": true,
         "options": {}
       },
-      "id": "704c0c84-2208-46c4-b27e-fbc618df526e",
+      "id": "bf0be074-663c-45ac-b8a9-f441e424461a",
       "name": "List All S3 Files",
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        2112,
-        1456
+        3440,
+        2176
       ],
       "credentials": {
         "s3": {
@@ -1117,13 +1117,13 @@
       "parameters": {
         "jsCode": "// Get the current captioned video key from Caption Video node\nlet currentCaptionedKey = null;\ntry {\n  const captionUrl = $('Caption Video').first().json.response;\n  const match = captionUrl.match(/nca-toolkit\\/(.+)$/);\n  if (match) {\n    currentCaptionedKey = match[1];\n  }\n} catch (e) {\n  // Caption Video might not have response\n}\n\n// Get all S3 files and filter for deletion\nconst filesToDelete = [];\nconst items = $input.all();\n\nitems.forEach(item => {\n  const key = item.json.Key;\n  \n  // Skip if this is the current captioned video\n  if (currentCaptionedKey && key === currentCaptionedKey) {\n    return; // Keep this file\n  }\n  \n  // Delete all .mp4 and .mp3 files (old videos and audio)\n  if (key.endsWith('.mp4') || key.endsWith('.mp3')) {\n    filesToDelete.push({\n      json: { key }\n    });\n  }\n});\n\n// Also add the audio folder paths to delete (they should be empty after files are deleted)\nfor (let i = 1; i <= 3; i++) {\n  filesToDelete.push({\n    json: { key: 'audio/elevenlabs_' + i + '/' }\n  });\n}\n\nreturn filesToDelete;"
       },
-      "id": "7f9ac34c-6b9d-40aa-a347-7338665e1b2e",
+      "id": "7d429878-3d26-4c25-a542-0ac6a0458600",
       "name": "Filter Cleanup Files",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2256,
-        1296
+        3584,
+        2016
       ]
     },
     {
@@ -1133,13 +1133,13 @@
         "fileKey": "={{ $json.key }}",
         "options": {}
       },
-      "id": "b0aced14-7e02-4222-8154-ab4534383064",
+      "id": "44ee458c-1f25-4f2e-b438-121b9e347782",
       "name": "Delete Temp Files",
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        2432,
-        1280
+        3760,
+        2000
       ],
       "credentials": {
         "s3": {
@@ -1157,11 +1157,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2080,
-        1200
+        3408,
+        1920
       ],
       "typeVersion": 1,
-      "id": "ac472295-0875-4f0f-bd63-6daca36ade2b",
+      "id": "1e9e3805-c534-4369-813b-e6e6ca2d6668",
       "name": "Sticky Note11"
     },
     {
@@ -1178,10 +1178,10 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        384,
-        160
+        1712,
+        880
       ],
-      "id": "39250709-4b81-4b35-b395-853c680a869c",
+      "id": "500901dc-4150-4c81-b7d0-f8f8553ad23c",
       "name": "Insert Stories",
       "credentials": {
         "supabaseApi": {
@@ -1199,11 +1199,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
-        0
+        1328,
+        720
       ],
       "typeVersion": 1,
-      "id": "3ceb6e6b-2b08-4a32-80d5-2870fcb1ebe2",
+      "id": "d379a8ad-50e8-45c4-b8ec-ee7ae47c6115",
       "name": "Sticky Note12"
     },
     {
@@ -1223,10 +1223,10 @@
       "type": "@n8n/n8n-nodes-langchain.chainLlm",
       "typeVersion": 1.7,
       "position": [
-        80,
-        80
+        1408,
+        800
       ],
-      "id": "45a70cf5-da46-4fec-8578-48009e4232a0",
+      "id": "77d6eb60-bb02-409b-80b0-29f3761af6ed",
       "name": "Basic LLM Chain1"
     },
     {
@@ -1242,10 +1242,10 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        64,
-        272
+        1392,
+        992
       ],
-      "id": "04ac9a2d-4b0a-4474-9737-0e547dec42a5",
+      "id": "241f50b7-c82b-47b3-b007-24808b91f4a4",
       "name": "AF4 Chat Model1",
       "credentials": {
         "openAiApi": {
@@ -1261,10 +1261,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        224,
-        256
+        1552,
+        976
       ],
-      "id": "98157672-62a3-441c-bdbb-783d4a24a8a1",
+      "id": "f987f13c-3555-4093-b81c-64bed90bd92b",
       "name": "Structured Output Parser1"
     },
     {
@@ -1276,7 +1276,7 @@
             {
               "keyName": "s_no",
               "condition": "eq",
-              "keyValue": "={{ $items('Set Variables1')[0].json.ID }}"
+              "keyValue": "={{ $('Supabase Insert').first().json.s_no }}"
             }
           ]
         },
@@ -1296,10 +1296,10 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        2432,
-        1472
+        3760,
+        2192
       ],
-      "id": "c5977715-4c2a-4841-baa4-1e2359670fb4",
+      "id": "5ead3d72-2b18-4941-84f8-00464f8ab3f6",
       "name": "Update Status",
       "credentials": {
         "supabaseApi": {
@@ -1307,29 +1307,6 @@
           "name": "Supabase account"
         }
       }
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "ae3c4fa7-55f7-4d53-b6db-e5204061e699",
-              "name": "ID",
-              "value": "={{ $json.s_no }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        160,
-        1232
-      ],
-      "id": "a64435d7-4858-4ebc-9dfb-e34a39a01f8a",
-      "name": "Set Variables1"
     }
   ],
   "pinData": {
@@ -1586,11 +1563,6 @@
             "node": "Basic LLM Chain",
             "type": "main",
             "index": 0
-          },
-          {
-            "node": "Set Variables1",
-            "type": "main",
-            "index": 0
           }
         ]
       ]
@@ -1755,17 +1727,6 @@
           }
         ]
       ]
-    },
-    "Set Variables1": {
-      "main": [
-        [
-          {
-            "node": "Update Status",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "active": false,
@@ -1773,7 +1734,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "5c36f0c8-d288-49ff-86c8-bda546e57ad8",
+  "versionId": "7484b2e6-7abd-4290-83d1-b9c271d9c41b",
   "meta": {
     "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
   },
