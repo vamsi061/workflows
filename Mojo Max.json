@@ -1332,15 +1332,15 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        2208,
-        4016
+        2176,
+        3984
       ],
       "id": "ba251279-17cc-4d26-bfc3-20445bb2b0d0",
       "name": "Process Images Sequentially"
     },
     {
       "parameters": {
-        "jsCode": "// Get the current item from the Split in Batches node\nconst currentItem = $input.first();\n\n// Try to get the last generated image URL from the Code node\n// This will be available after the first iteration\nlet previousImageUrl = null;\n\ntry {\n  const codeItems = $('Code').all();\n  if (codeItems && codeItems.length > 0) {\n    const lastCodeItem = codeItems[codeItems.length - 1];\n    previousImageUrl = lastCodeItem.json?.generated_image_url;\n  }\n} catch (error) {\n  // First iteration, Code node hasn't run yet\n}\n\n// If no previous image, use the initial image URL or the one from current item\nif (!previousImageUrl) {\n  previousImageUrl = currentItem.json?.previous_image || \"https://raw.githubusercontent.com/vamsi061/workflows/refs/heads/main/MojoMax.png\";\n}\n\n// Output the current item with the correct previous_image set\nconst output = {\n  json: {\n    image_script: currentItem.json.image_script,\n    image_index: currentItem.json.image_index,\n    previous_image: previousImageUrl\n  }\n};\n\nreturn [output];"
+        "jsCode": "// Get current item from Split in Batches\nconst currentItem = $input.first();\n\nlet previousImageUrl = null;\n\n// Try to get the last generated image URL from Image Get node\ntry {\n  const imageGetItems = $('Image Get').all();\n  \n  if (imageGetItems && imageGetItems.length > 0) {\n    const lastImageItem = imageGetItems[imageGetItems.length - 1];\n    previousImageUrl = lastImageItem.json?.data?.[0]?.url;\n  }\n} catch (error) {\n  // First iteration - Image Get hasn't executed yet\n}\n\n// If no previous image found, use fallback\nif (!previousImageUrl) {\n  previousImageUrl = currentItem.json?.previous_image \n    || \"https://raw.githubusercontent.com/vamsi061/workflows/refs/heads/main/MojoMax.png\";\n}\n\n// Return updated item\nreturn [{\n  json: {\n    image_script: currentItem.json.image_script,\n    image_index: currentItem.json.image_index,\n    previous_image: previousImageUrl\n  }\n}];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -1909,7 +1909,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "45f4fbe5-4366-41f5-967a-66705bfeb4d9",
+  "versionId": "7fe2d25a-66c7-4e51-83c8-bbf5b9b8bc5e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
