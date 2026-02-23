@@ -1,0 +1,1290 @@
+{
+  "name": "Story Board",
+  "nodes": [
+    {
+      "parameters": {
+        "jsCode": "const input = $input.first().json;\n\nconst BASE_URL = 'http://host.docker.internal:8080';\nconst output = {};\n\n// Helper to extract path safely\nfunction extractPath(fullUrl) {\n  const pathIndex = fullUrl.indexOf('/', 8); \n  // skip \"http://\"\n  return pathIndex !== -1 ? fullUrl.substring(pathIndex) : '';\n}\n\n// Get image keys sorted numerically\nconst imageKeys = Object.keys(input)\n  .filter(key => key.startsWith('image_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Get audio keys sorted numerically\nconst audioKeys = Object.keys(input)\n  .filter(key => key.startsWith('audio_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Process images\nimageKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const imageUrl = input[key] && input[key].image_url;\n\n  if (imageUrl) {\n    const path = extractPath(imageUrl);\n    output[`Image ${index}`] = BASE_URL + path;\n  }\n});\n\n// Process audio\naudioKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const audioUrl = input[key] && input[key].file_url;\n\n  if (audioUrl) {\n    const path = extractPath(audioUrl);\n    output[`Audio ${index}`] = BASE_URL + path;\n  }\n});\n\n// Add constant base_url\noutput.base_url = BASE_URL;\n\nreturn [{ json: output }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8624,
+        26064
+      ],
+      "id": "2672b14d-de2b-4e71-8ea0-3bc489e91ac6",
+      "name": "Set Variables"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "scenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        8640,
+        26368
+      ],
+      "id": "716bcb4d-8f85-49b1-a370-d4d96d6c8a8a",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "jsCode": "const buildArrayScenes = $('Build Faceless Array').first().json.scenes;\nconst doneBranchItems = $input.all();\n\nconst updatedScenes = buildArrayScenes.map(scene => {\n\n  const matchingVideoItem = doneBranchItems.find(item =>\n    item.json?.id === scene.sceneId &&\n    typeof item.json.response === 'string' && \n    item.json.response.startsWith('http')\n  );\n\n  if (matchingVideoItem) {\n    return {\n      ...scene,\n      video: matchingVideoItem.json.response,\n    };\n  }\n\n  return scene;\n});\n\nreturn [\n  {\n    json: {\n      scenes: updatedScenes,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9040,
+        26368
+      ],
+      "id": "af4e30c4-5ade-4d43-9347-dca844403add",
+      "name": "Create Array with Videos"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "scenes",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        9248,
+        26048
+      ],
+      "id": "6d2110fc-6625-47bc-948b-cddcb4285ba0",
+      "name": "Split Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst videoUrls = items.map((item) => ({\n  video_url: item.json.response[0].file_url\n}));\n\nconst output = {\n  video_urls: videoUrls,\n  id: \"2323\"\n};\n\nreturn [\n  {\n    json: {\n      output: JSON.stringify(output)\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9904,
+        26048
+      ],
+      "id": "0b686e10-0c0c-4fb2-a08a-bf3c4a852145",
+      "name": "Build Video Array"
+    },
+    {
+      "parameters": {
+        "content": "## Prepare Automation",
+        "height": 300,
+        "width": 580,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        8368,
+        25952
+      ],
+      "typeVersion": 1,
+      "id": "fbf493fb-cb6b-4bb6-b44a-311243c2fe14",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/image/transform/video",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"image_url\":\"{{ $json.image }}\",\n    \"length\": 20,\n    \"frame_rate\": 25,\n    \"zoom_speed\": 6,\n    \"id\": \"{{ $('Split Out').item.json.sceneId }}\"\n} ",
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        8816,
+        26368
+      ],
+      "id": "c5eff303-c9ab-45dc-aaf9-cbc7ed818a8d",
+      "name": "Generate Video"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Videos",
+        "height": 300,
+        "width": 580,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        8368,
+        26272
+      ],
+      "typeVersion": 1,
+      "id": "25bf76e8-d76d-466e-8662-c6d950c59b72",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "jsCode": "const item = $input.first().json;\n\nconst scenes = [];\n\nconst keys = Object.keys(item);\nconst sceneNumbers = new Set();\n\nkeys.forEach(key => {\n  const match = key.match(/(Audio|Image) (\\d+)/);\n  if (match) {\n    sceneNumbers.add(match[2]);\n  }\n});\n\nArray.from(sceneNumbers)\n  .sort((a, b) => Number(a) - Number(b))\n  .forEach(num => {\n    scenes.push({\n      audio: item[`Audio ${num}`] || null,\n      image: item[`Image ${num}`] || null,\n      video: null,\n      sceneId: `Scene ${num}`,\n    });\n  });\n\nreturn [\n  {\n    json: {\n      scenes,\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9024,
+        26064
+      ],
+      "id": "757cbe3d-67b9-4c91-b1c8-4f6bda903c09",
+      "name": "Build Faceless Array"
+    },
+    {
+      "parameters": {
+        "content": "## Get Video Metadata",
+        "height": 300,
+        "width": 580,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        8976,
+        25952
+      ],
+      "typeVersion": 1,
+      "id": "04e5cc02-c23f-4857-9fd6-1b27b3b30a95",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## Trim Audio + Video",
+        "height": 300,
+        "width": 580,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        8976,
+        26272
+      ],
+      "typeVersion": 1,
+      "id": "fcb96f66-1ece-4bf9-97be-7edc9678be11",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Final Merged Video",
+        "height": 300,
+        "width": 748,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        9584,
+        25952
+      ],
+      "typeVersion": 1,
+      "id": "e861dd6a-7baf-4b7b-8aa4-bbba4150cf42",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/concatenate",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.output }}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10128,
+        26048
+      ],
+      "id": "b9360843-40a2-4bcc-9d47-bc50f224b39b",
+      "name": "Concatenate Video"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/trim",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"video_url\": \"{{ $('Split Items').item.json.video }}\",\n    \"start\": \"00:00:00\",\n    \"end\": \"{{ $json.response.duration_formatted }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9312,
+        26368
+      ],
+      "id": "abd961c1-81b7-4209-a530-99219cbea61a",
+      "name": "Trim Video"
+    },
+    {
+      "parameters": {
+        "content": "## Caption Video",
+        "height": 300,
+        "width": 748,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        9584,
+        26272
+      ],
+      "typeVersion": 1,
+      "id": "d4f2eba4-5173-4a8c-b828-24bb4c18eb5a",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/media/metadata ",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"media_url\": \"{{ $json.audio }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9440,
+        26048
+      ],
+      "id": "bbda6d83-021d-437d-a18a-bf0ab6137dd4",
+      "name": "Get Audio Metadata"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/video/caption",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"video_url\": \"{{ $json.response }}\",\n  \"settings\": {\n    \"line_color\": \"#FFFFFF\",\n    \"word_color\": \"#66ff74\",\n    \"all_caps\": false,\n    \"max_words_per_line\": 3,\n    \"font_size\": 60,\n    \"bold\": false,\n    \"italic\": false,\n    \"underline\": false,\n    \"strikeout\": false,\n    \"outline_width\": 3,\n    \"shadow_offset\": 4,\n    \"style\": \"highlight\",\n    \"font_family\": \"The Bold Font\",\n    \"position\": \"bottom_center\"\n  },\n  \"id\": \"gdrive-five\"\n}",
+        "options": {
+          "redirect": {
+            "redirect": {
+              "followRedirects": false
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        10000,
+        26368
+      ],
+      "id": "a0f51e3e-8679-4594-8246-4910ab364aee",
+      "name": "Caption Video"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('Set Variables').first().json.base_url }}/v1/ffmpeg/compose",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "thekey"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"inputs\": [\n    {\n      \"file_url\": \"{{ $json.response }}\"\n    },\n    {\n      \"file_url\": \"{{ $('Split Items').item.json.audio }}\"\n    }\n  ],\n  \"outputs\": [\n    {\n      \"options\": [\n        {\n          \"option\": \"-map\",\n          \"argument\": \"0:v:0\"\n        },\n        {\n          \"option\": \"-map\",\n          \"argument\": \"1:a:0\"\n        },\n        {\n          \"option\": \"-c:v\",\n          \"argument\": \"copy\"\n        },\n        {\n          \"option\": \"-c:a\",\n          \"argument\": \"aac\"\n        },\n        {\n          \"option\": \"-shortest\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9680,
+        26368
+      ],
+      "id": "b641a40c-6ef3-4362-b15a-c6f9d1fb6cb3",
+      "name": "Combine Audio + Video"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Just pass through the data from Generate Image Items\n// It already has filePath and fileName set correctly\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10032,
+        25216
+      ],
+      "id": "fd342b30-5df8-4f4d-b33b-f6f8676a2353",
+      "name": "Get Image Path (Pass Through)"
+    },
+    {
+      "parameters": {
+        "filePath": "={{ $json.filePath }}"
+      },
+      "type": "n8n-nodes-base.readBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        10368,
+        25216
+      ],
+      "id": "63d17f2a-255c-4ed6-8afa-c7bb13cfd59f",
+      "name": "Read Image File"
+    },
+    {
+      "parameters": {
+        "jsCode": "// After aggregate, get audioScript from the first item's data\nconst items = $input.all();\n\n// The aggregate node wraps items in a 'data' array\n// Get the audioScript from the first original item\nlet audioScript;\n\nif (items.length > 0 && items[0].json.data && Array.isArray(items[0].json.data)) {\n  // Aggregate output format\n  const firstOriginalItem = items[0].json.data[0];\n  audioScript = firstOriginalItem.audioScript;\n} else {\n  // Direct format (fallback)\n  audioScript = items[0].json.audioScript || items[0].json['Complete Audio Script'];\n}\n\nif (!audioScript) {\n  const availableKeys = Object.keys(items[0].json).join(', ');\n  throw new Error(`No audio script found. Available keys: ${availableKeys}`);\n}\n\n// Split by blank lines (double newline)\nconst segments = audioScript\n  .split(/\\n\\s*\\n/)\n  .map(s => s.trim())\n  .filter(s => s.length > 0);\n\n// Create output with audio_1, audio_2, etc.\nconst output = {};\nsegments.forEach((segment, index) => {\n  output[`audio_${index + 1}`] = segment;\n});\n\nreturn [{ json: output }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8944,
+        25136
+      ],
+      "id": "f6f6557b-87a7-45eb-96cf-83ef340ca840",
+      "name": "Split Audio Scripts"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the number of audio scripts\nconst audioCount = Object.keys($input.first().json).filter(key => key.startsWith('audio_')).length;\n\n// We have 20 images saved (1.png through 20.png)\nconst imageCount = 20;\n\nconst items = [];\n\n// Generate items for each audio segment\nfor (let i = 1; i <= audioCount; i++) {\n  let imageIndex;\n  \n  if (i <= imageCount) {\n    // Use images 1-20 for audio 1-20\n    imageIndex = i;\n  } else {\n    // Reuse from the end: audio 21 -> image 19, audio 22 -> image 20\n    const overflow = i - imageCount;\n    imageIndex = imageCount - overflow + 1;\n  }\n  \n  items.push({\n    json: {\n      image_index: i,\n      actual_image_file: imageIndex,\n      filePath: `/home/node/.n8n-files/images/${imageIndex}.png`,\n      fileName: `${imageIndex}.png`\n    }\n  });\n}\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9408,
+        25152
+      ],
+      "id": "c61f551f-568f-40bb-8ecb-1193f1a8d1a9",
+      "name": "Generate Image Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const combinedItem = {\n  json: {}\n};\n\n// Combine all items into a single item\n$input.all().forEach((item, index) => {\n  const audioNumber = index + 1;\n  combinedItem.json[`image_${audioNumber}`] = item.json.audio_script || item.json;\n});\n\nreturn [combinedItem];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10352,
+        25008
+      ],
+      "id": "dffc62e4-12bf-4a06-82a2-faeb0f22ec51",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "jsCode": "const combinedItem = {\n  json: {}\n};\n\n// Combine all items into a single item\n$input.all().forEach((item, index) => {\n  const audioNumber = index + 1;\n  combinedItem.json[`audio_${audioNumber}`] = item.json.audio_script || item.json;\n});\n\nreturn [combinedItem];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10256,
+        25568
+      ],
+      "id": "44b9e96e-a39b-4089-ada7-fd3f8d60c2d3",
+      "name": "Code1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        10640,
+        25584
+      ],
+      "id": "f0b3399a-e369-4acb-8d80-eef769bc31e4",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "content": "# Self-Hosted API for Video Creation, Merging, and Auto-Captions",
+        "height": 796,
+        "width": 2624
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        8304,
+        25808
+      ],
+      "id": "75b927de-9d02-4fa7-aa87-94c1c6739952",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Images",
+        "height": 604,
+        "width": 1196,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        9392,
+        24816
+      ],
+      "typeVersion": 1,
+      "id": "f3ebad1b-06a2-4d20-96b2-ae8699700b4f",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "## Generate Audio ",
+        "height": 332,
+        "width": 1116,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        9392,
+        25456
+      ],
+      "typeVersion": 1,
+      "id": "535f45c2-b712-4819-a538-5b741fe908e9",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "## Unbundle Images & Audio",
+        "height": 704,
+        "width": 1060,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        8288,
+        25056
+      ],
+      "typeVersion": 1,
+      "id": "b06bda17-29c8-4357-af28-0e4a56f0d712",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        9472,
+        25504
+      ],
+      "id": "67e64458-1edc-47c5-959d-abf52ca59206",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36039af3-7622-474f-9bdb-0766b870c12c",
+              "name": "file_url",
+              "value": "={{ \"http://host.docker.internal:9000/nca-toolkit/audio/elevenlabs_\" + ($itemIndex + 1) + \"/speech.mp3\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10048,
+        25488
+      ],
+      "id": "7f7e9627-a103-477c-a24a-6e55ef5b45a8",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8880/v1/audio/speech",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  \"input\": $json.audio_script,\n  \"voice\": \"am_michael\",\n  \"response_format\": \"mp3\"\n} }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        9712,
+        25584
+      ],
+      "id": "fc250a27-9622-4398-a76b-b64aee4fd3c5",
+      "name": "Kokoro TTS"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "bucketName": "nca-toolkit",
+        "returnAll": true,
+        "options": {}
+      },
+      "id": "bad4c587-31b8-49aa-8b5e-34f6c38c1b6a",
+      "name": "List All S3 Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        10384,
+        26288
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the current captioned video key from Caption Video node\nlet currentCaptionedKey = null;\ntry {\n  const captionUrl = $('Caption Video').first().json.response;\n  const match = captionUrl.match(/nca-toolkit\\/(.+)$/);\n  if (match) {\n    currentCaptionedKey = match[1];\n  }\n} catch (e) {\n  // Caption Video might not have response\n}\n\n// Get all S3 files and filter for deletion\nconst filesToDelete = [];\nconst items = $input.all();\n\nitems.forEach(item => {\n  const key = item.json.Key;\n  \n  // Skip if this is the current captioned video\n  if (currentCaptionedKey && key === currentCaptionedKey) {\n    return; // Keep this file\n  }\n  \n  // Delete all .mp4 and .mp3 files (old videos and audio)\n  if (key.endsWith('.mp4') || key.endsWith('.mp3')) {\n    filesToDelete.push({\n      json: { key }\n    });\n  }\n});\n\n// Also add the audio folder paths to delete (they should be empty after files are deleted)\nfor (let i = 1; i <= 3; i++) {\n  filesToDelete.push({\n    json: { key: 'audio/elevenlabs_' + i + '/' }\n  });\n}\n\nreturn filesToDelete;"
+      },
+      "id": "3bf4eca6-ebab-4bb6-891d-9f26021f73c8",
+      "name": "Filter Cleanup Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        10528,
+        26128
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "bucketName": "nca-toolkit",
+        "fileKey": "={{ $json.key }}",
+        "options": {}
+      },
+      "id": "227af110-1041-4ea9-8f1f-2261556502f5",
+      "name": "Delete Temp Files",
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        10704,
+        26112
+      ],
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Clean up files from S3",
+        "height": 412,
+        "width": 556,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        10352,
+        26032
+      ],
+      "typeVersion": 1,
+      "id": "f89655b9-a59c-4203-af88-1297ee3e669f",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        9776,
+        25088
+      ],
+      "id": "c65686e3-b609-4150-8e1d-bc155a20bb3d",
+      "name": "Process Images Sequentially"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "36039af3-7622-474f-9bdb-0766b870c12c",
+              "name": "image_url",
+              "value": "={{ \"http://host.docker.internal:9000/nca-toolkit/images/image_\" + $json.image_index + \"/image.png\" }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        10160,
+        24944
+      ],
+      "id": "6ef11886-1d7a-4b16-9b1f-4dad0fe2c5e6",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "nca-toolkit",
+        "additionalFields": {
+          "parentFolderKey": "=audio/elevenlabs_{{$itemIndex + 1}}"
+        }
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        9840,
+        25488
+      ],
+      "id": "5c3db64b-19c1-465a-a9a4-bc6f79f016a5",
+      "name": "Upload a file",
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "nca-toolkit",
+        "fileName": "image.png",
+        "additionalFields": {
+          "parentFolderKey": "=images/image_{{$json.image_index}}"
+        }
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        9616,
+        24896
+      ],
+      "id": "15ff459c-9001-4536-9413-d86e86945194",
+      "name": "Upload a file1",
+      "credentials": {
+        "s3": {
+          "id": "SKZ3sdER2DNqAkda",
+          "name": "S3 account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get uploaded files from form\nconst inputItem = $input.first();\nconst json = inputItem.json || {};\nconst binaryData = inputItem.binary || {};\n\nconst allKeys = Object.keys(json).join(', ');\n\n// Get audio script\nconst audioScript =\n  json['Complete Audio Script'] ||\n  json['Story Audio Script'] ||\n  json['complete_audio_script'];\n\nif (!audioScript) {\n  throw new Error(`Audio script not found. Form JSON keys: ${allKeys}`);\n}\n\n// Collect ALL binary files\nconst binaryKeys = Object.keys(binaryData);\n\nif (binaryKeys.length === 0) {\n  throw new Error('No images found in binary data');\n}\n\nconst items = [];\n\nbinaryKeys.forEach((key, index) => {\n  const file = binaryData[key];\n  const imageIndex = index + 1;\n\n  const targetPath = `/home/node/.n8n-files/images/${imageIndex}.png`;\n\n  items.push({\n    json: {\n      image_index: imageIndex,\n      filePath: targetPath,\n      audioScript: audioScript,\n      originalFileName: file.fileName || `image_${imageIndex}`,\n      binaryFieldName: key\n    },\n    binary: {\n      data: file\n    }\n  });\n});\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        8512,
+        25360
+      ],
+      "id": "700c8cb0-9664-49c1-a606-11d7d849a8e9",
+      "name": "Process Uploaded Images"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        8720,
+        25264
+      ],
+      "id": "aa488a31-2ae6-43f8-8795-18864b7d0e98",
+      "name": "Loop Over Uploaded Images"
+    },
+    {
+      "parameters": {
+        "fileName": "={{ $json.filePath }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        8976,
+        25472
+      ],
+      "id": "253f997f-5486-48e6-9c49-c7a0da04905f",
+      "name": "Save Image to Filesystem"
+    },
+    {
+      "parameters": {
+        "path": "24b00c63-0b84-402b-8b09-801d213f0f37",
+        "formTitle": "Story Video Creation",
+        "formDescription": "Upload your images and paste your audio script. Each paragraph separated by a blank line will become one audio segment.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Story Images",
+              "fieldType": "file",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Complete Audio Script",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.1,
+      "position": [
+        8352,
+        25360
+      ],
+      "id": "7ea18c06-61df-4c6d-9ba2-aea51eb1b15e",
+      "name": "Form Trigger",
+      "webhookId": "24b00c63-0b84-402b-8b09-801d213f0f37"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        8352,
+        25136
+      ],
+      "id": "c1dae98e-f962-414d-8f74-4e9008bec2af",
+      "name": "Wait for All Images Saved"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Prepare items for Kokoro TTS API\nconst audioData = $input.first().json;\n\n// Get all audio segments\nconst audioKeys = Object.keys(audioData).filter(key => key.startsWith('audio_')).sort();\n\nconst items = [];\naudioKeys.forEach((key, index) => {\n  items.push({\n    json: {\n      audio_index: index + 1,\n      audio_script: audioData[key],\n      input: audioData[key]  // Required by Kokoro TTS API\n    }\n  });\n});\n\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9168,
+        25312
+      ],
+      "id": "1a8c6bc4-2757-4d83-ae2f-c47359c09a19",
+      "name": "Prepare Audio Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nreturn items.map((item, index) => {\n  const currentItem = item.json || {};\n\n  return {\n    json: {\n      ...currentItem,\n      image_index: index + 1   // Proper increment\n    },\n    binary: item.binary\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        9936,
+        24928
+      ],
+      "id": "b7f3a811-4972-4894-986e-58b0f18a500c",
+      "name": "Add Image Index Back"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Caption Video": {
+      "main": [
+        [
+          {
+            "node": "List All S3 Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Variables": {
+      "main": [
+        [
+          {
+            "node": "Build Faceless Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Array with Videos": {
+      "main": [
+        [
+          {
+            "node": "Split Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Items": {
+      "main": [
+        [
+          {
+            "node": "Get Audio Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Video Array": {
+      "main": [
+        [
+          {
+            "node": "Concatenate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Video": {
+      "main": [
+        [
+          {
+            "node": "Create Array with Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Faceless Array": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Concatenate Video": {
+      "main": [
+        [
+          {
+            "node": "Caption Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Trim Video": {
+      "main": [
+        [
+          {
+            "node": "Combine Audio + Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Audio Metadata": {
+      "main": [
+        [
+          {
+            "node": "Trim Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Audio + Video": {
+      "main": [
+        [
+          {
+            "node": "Build Video Array",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Audio Scripts": {
+      "main": [
+        [
+          {
+            "node": "Generate Image Items",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Prepare Audio Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Image Items": {
+      "main": [
+        [
+          {
+            "node": "Process Images Sequentially",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Image Path (Pass Through)": {
+      "main": [
+        [
+          {
+            "node": "Read Image File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Image File": {
+      "main": [
+        [
+          {
+            "node": "Upload a file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Images Sequentially": {
+      "main": [
+        [
+          {
+            "node": "Add Image Index Back",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get Image Path (Pass Through)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Set Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Upload a file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Kokoro TTS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kokoro TTS": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Generate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "List All S3 Files": {
+      "main": [
+        [
+          {
+            "node": "Filter Cleanup Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Cleanup Files": {
+      "main": [
+        [
+          {
+            "node": "Delete Temp Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a file": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a file1": {
+      "main": [
+        [
+          {
+            "node": "Process Images Sequentially",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "Process Uploaded Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Uploaded Images": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Uploaded Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Uploaded Images": {
+      "main": [
+        [
+          {
+            "node": "Split Audio Scripts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save Image to Filesystem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Image to Filesystem": {
+      "main": [
+        [
+          {
+            "node": "Wait for All Images Saved",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for All Images Saved": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Uploaded Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Audio Items": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Image Index Back": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "5e60fda8-9b06-4987-9530-2d40495210f6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
+  },
+  "id": "k6FWhnhe9RiBsrLB",
+  "tags": [
+    {
+      "updatedAt": "2026-01-20T09:44:21.813Z",
+      "createdAt": "2026-01-20T09:44:21.813Z",
+      "id": "d21Q8MpJ5Yhlo3yu",
+      "name": "youtube"
+    }
+  ]
+}
