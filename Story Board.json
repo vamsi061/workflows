@@ -3,15 +3,15 @@
   "nodes": [
     {
       "parameters": {
-        "jsCode": "const input = $input.first().json;\n\nconst BASE_URL = 'http://host.docker.internal:8080';\nconst output = {};\n\n// Helper to extract path safely\nfunction extractPath(fullUrl) {\n  const pathIndex = fullUrl.indexOf('/', 8); \n  // skip \"http://\"\n  return pathIndex !== -1 ? fullUrl.substring(pathIndex) : '';\n}\n\n// Get image keys sorted numerically\nconst imageKeys = Object.keys(input)\n  .filter(key => key.startsWith('image_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Get audio keys sorted numerically\nconst audioKeys = Object.keys(input)\n  .filter(key => key.startsWith('audio_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Process images\nimageKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const imageUrl = input[key] && input[key].image_url;\n\n  if (imageUrl) {\n    const path = extractPath(imageUrl);\n    output[`Image ${index}`] = BASE_URL + path;\n  }\n});\n\n// Process audio\naudioKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const audioUrl = input[key] && input[key].file_url;\n\n  if (audioUrl) {\n    const path = extractPath(audioUrl);\n    output[`Audio ${index}`] = BASE_URL + path;\n  }\n});\n\n// Add constant base_url\noutput.base_url = BASE_URL;\n\nreturn [{ json: output }];"
+        "jsCode": "const input = $input.first().json;\n\nconst BASE_URL = 'http://host.docker.internal:8080';\nconst output = {};\n\n// Get image keys sorted numerically\nconst imageKeys = Object.keys(input)\n  .filter(key => key.startsWith('image_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Get audio keys sorted numerically\nconst audioKeys = Object.keys(input)\n  .filter(key => key.startsWith('audio_'))\n  .sort((a, b) => Number(a.split('_')[1]) - Number(b.split('_')[1]));\n\n// Process images (DO NOT MODIFY URL)\nimageKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const imageUrl = input[key] && input[key].image_url;\n\n  if (imageUrl) {\n    output[`Image ${index}`] = imageUrl;\n  }\n});\n\n// Process audio (DO NOT MODIFY URL)\naudioKeys.forEach(key => {\n  const index = key.split('_')[1];\n  const audioUrl = input[key] && input[key].file_url;\n\n  if (audioUrl) {\n    output[`Audio ${index}`] = audioUrl;\n  }\n});\n\n// Add constant base_url separately\noutput.base_url = BASE_URL;\n\nreturn [{ json: output }];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8624,
-        26064
+        7600,
+        28144
       ],
-      "id": "2672b14d-de2b-4e71-8ea0-3bc489e91ac6",
+      "id": "e8203903-f597-4c3e-959c-90dd65fd66a8",
       "name": "Set Variables"
     },
     {
@@ -22,10 +22,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        8640,
-        26368
+        7392,
+        28416
       ],
-      "id": "716bcb4d-8f85-49b1-a370-d4d96d6c8a8a",
+      "id": "8d04bfb2-c757-48d8-9fec-8f501b848fcf",
       "name": "Split Out"
     },
     {
@@ -35,10 +35,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9040,
-        26368
+        8016,
+        28448
       ],
-      "id": "af4e30c4-5ade-4d43-9347-dca844403add",
+      "id": "7eafaf41-792f-4425-9a62-068898838b3c",
       "name": "Create Array with Videos"
     },
     {
@@ -49,10 +49,10 @@
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
       "position": [
-        9248,
-        26048
+        8224,
+        28128
       ],
-      "id": "6d2110fc-6625-47bc-948b-cddcb4285ba0",
+      "id": "537c9a58-28e5-46d0-83aa-318342780d6c",
       "name": "Split Items"
     },
     {
@@ -62,10 +62,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9904,
-        26048
+        8880,
+        28128
       ],
-      "id": "0b686e10-0c0c-4fb2-a08a-bf3c4a852145",
+      "id": "92a16071-f400-4dc0-86bf-c2799d75ac69",
       "name": "Build Video Array"
     },
     {
@@ -77,11 +77,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        8368,
-        25952
+        7344,
+        28032
       ],
       "typeVersion": 1,
-      "id": "fbf493fb-cb6b-4bb6-b44a-311243c2fe14",
+      "id": "69fd11b8-c46a-4eba-874a-be54aadb74ff",
       "name": "Sticky Note"
     },
     {
@@ -111,10 +111,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        8816,
-        26368
+        7552,
+        28416
       ],
-      "id": "c5eff303-c9ab-45dc-aaf9-cbc7ed818a8d",
+      "id": "634a8c5b-72fb-48e4-a56d-804a91eb3f7b",
       "name": "Generate Video"
     },
     {
@@ -126,11 +126,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        8368,
-        26272
+        7344,
+        28352
       ],
       "typeVersion": 1,
-      "id": "25bf76e8-d76d-466e-8662-c6d950c59b72",
+      "id": "c2b97357-1baa-4fa9-a624-23e1da102aba",
       "name": "Sticky Note1"
     },
     {
@@ -140,10 +140,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9024,
-        26064
+        8000,
+        28144
       ],
-      "id": "757cbe3d-67b9-4c91-b1c8-4f6bda903c09",
+      "id": "13a29906-10b7-40c1-aa55-d78a9a02d9ad",
       "name": "Build Faceless Array"
     },
     {
@@ -155,11 +155,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        8976,
-        25952
+        7952,
+        28032
       ],
       "typeVersion": 1,
-      "id": "04e5cc02-c23f-4857-9fd6-1b27b3b30a95",
+      "id": "db6abca7-2dc3-4e20-8a0f-fab9cbd97732",
       "name": "Sticky Note2"
     },
     {
@@ -171,11 +171,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        8976,
-        26272
+        7952,
+        28352
       ],
       "typeVersion": 1,
-      "id": "fcb96f66-1ece-4bf9-97be-7edc9678be11",
+      "id": "6e8bc506-4132-4535-9fa2-217ed16a11f7",
       "name": "Sticky Note3"
     },
     {
@@ -187,11 +187,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        9584,
-        25952
+        8560,
+        28032
       ],
       "typeVersion": 1,
-      "id": "e861dd6a-7baf-4b7b-8aa4-bbba4150cf42",
+      "id": "c071180c-e0d4-4e67-ae88-e7586d6ea737",
       "name": "Sticky Note4"
     },
     {
@@ -219,10 +219,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        10128,
-        26048
+        9104,
+        28128
       ],
-      "id": "b9360843-40a2-4bcc-9d47-bc50f224b39b",
+      "id": "9e3f7754-1378-4a20-81bb-722bdff2301a",
       "name": "Concatenate Video"
     },
     {
@@ -246,10 +246,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        9312,
-        26368
+        8288,
+        28448
       ],
-      "id": "abd961c1-81b7-4209-a530-99219cbea61a",
+      "id": "21b5dd99-b9b2-4eff-8af2-57597462e9a0",
       "name": "Trim Video"
     },
     {
@@ -261,11 +261,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        9584,
-        26272
+        8560,
+        28352
       ],
       "typeVersion": 1,
-      "id": "d4f2eba4-5173-4a8c-b828-24bb4c18eb5a",
+      "id": "fa707f57-df2d-48fe-b725-363428375316",
       "name": "Sticky Note5"
     },
     {
@@ -289,10 +289,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        9440,
-        26048
+        8416,
+        28128
       ],
-      "id": "bbda6d83-021d-437d-a18a-bf0ab6137dd4",
+      "id": "245ca27c-065f-4b1a-9fa9-bce827e8fe13",
       "name": "Get Audio Metadata"
     },
     {
@@ -322,10 +322,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        10000,
-        26368
+        8976,
+        28448
       ],
-      "id": "a0f51e3e-8679-4594-8246-4910ab364aee",
+      "id": "c455720f-f171-445b-b513-3cd347e08258",
       "name": "Caption Video"
     },
     {
@@ -353,10 +353,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        9680,
-        26368
+        8656,
+        28448
       ],
-      "id": "b641a40c-6ef3-4362-b15a-c6f9d1fb6cb3",
+      "id": "d36dc5f4-d9cb-4fa4-bd16-86f2cbbe5905",
       "name": "Combine Audio + Video"
     },
     {
@@ -366,10 +366,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        10032,
-        25216
+        9008,
+        27296
       ],
-      "id": "fd342b30-5df8-4f4d-b33b-f6f8676a2353",
+      "id": "2cf899bd-6765-4c80-b55a-e073896bc997",
       "name": "Get Image Path (Pass Through)"
     },
     {
@@ -379,10 +379,10 @@
       "type": "n8n-nodes-base.readBinaryFile",
       "typeVersion": 1,
       "position": [
-        10368,
-        25216
+        9344,
+        27296
       ],
-      "id": "63d17f2a-255c-4ed6-8afa-c7bb13cfd59f",
+      "id": "e6dc05b5-928e-4ef6-9bfd-c7c60ebca65a",
       "name": "Read Image File"
     },
     {
@@ -392,10 +392,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8944,
-        25136
+        7920,
+        27216
       ],
-      "id": "f6f6557b-87a7-45eb-96cf-83ef340ca840",
+      "id": "1257c250-1db6-48f2-9c29-b8f86ef341df",
       "name": "Split Audio Scripts"
     },
     {
@@ -405,10 +405,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9408,
-        25152
+        8384,
+        27232
       ],
-      "id": "c61f551f-568f-40bb-8ecb-1193f1a8d1a9",
+      "id": "77f4d0aa-c5e3-44c1-a0cb-3f5eed364404",
       "name": "Generate Image Items"
     },
     {
@@ -418,10 +418,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        10352,
-        25008
+        9328,
+        27088
       ],
-      "id": "dffc62e4-12bf-4a06-82a2-faeb0f22ec51",
+      "id": "d73ebe61-63df-4c94-b1d7-8f8878b2466e",
       "name": "Code"
     },
     {
@@ -431,10 +431,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        10256,
-        25568
+        9232,
+        27648
       ],
-      "id": "44b9e96e-a39b-4089-ada7-fd3f8d60c2d3",
+      "id": "8545fb7e-b05b-4125-931e-3864803e06d2",
       "name": "Code1"
     },
     {
@@ -446,10 +446,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        10640,
-        25584
+        9616,
+        27664
       ],
-      "id": "f0b3399a-e369-4acb-8d80-eef769bc31e4",
+      "id": "56c1caf8-163c-4eda-aabe-2aa374160cb2",
       "name": "Merge"
     },
     {
@@ -461,10 +461,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        8304,
-        25808
+        7280,
+        27888
       ],
-      "id": "75b927de-9d02-4fa7-aa87-94c1c6739952",
+      "id": "5983340b-95e5-46b5-afaa-ff2e09932b0b",
       "name": "Sticky Note6"
     },
     {
@@ -476,11 +476,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        9392,
-        24816
+        8368,
+        26896
       ],
       "typeVersion": 1,
-      "id": "f3ebad1b-06a2-4d20-96b2-ae8699700b4f",
+      "id": "64054310-19fd-4d58-b7fb-27a5d4ff1ab9",
       "name": "Sticky Note7"
     },
     {
@@ -492,11 +492,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        9392,
-        25456
+        8368,
+        27536
       ],
       "typeVersion": 1,
-      "id": "535f45c2-b712-4819-a538-5b741fe908e9",
+      "id": "57300aff-551a-4659-9066-d6b23ca58da3",
       "name": "Sticky Note8"
     },
     {
@@ -508,11 +508,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        8288,
-        25056
+        7264,
+        27136
       ],
       "typeVersion": 1,
-      "id": "b06bda17-29c8-4357-af28-0e4a56f0d712",
+      "id": "28d3afa7-635e-42d5-bd6c-8238211a507b",
       "name": "Sticky Note9"
     },
     {
@@ -522,10 +522,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        9472,
-        25504
+        8448,
+        27584
       ],
-      "id": "67e64458-1edc-47c5-959d-abf52ca59206",
+      "id": "9cc07f51-c3c2-4988-abcc-cde9109da8f4",
       "name": "Loop Over Items"
     },
     {
@@ -545,10 +545,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        10048,
-        25488
+        9024,
+        27568
       ],
-      "id": "7f7e9627-a103-477c-a24a-6e55ef5b45a8",
+      "id": "ff9334d3-004c-44c3-8f99-8af7dc515565",
       "name": "Edit Fields"
     },
     {
@@ -578,10 +578,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        9712,
-        25584
+        8688,
+        27664
       ],
-      "id": "fc250a27-9622-4398-a76b-b64aee4fd3c5",
+      "id": "8cbc264a-161d-452f-ae74-451b6109b145",
       "name": "Kokoro TTS"
     },
     {
@@ -591,13 +591,13 @@
         "returnAll": true,
         "options": {}
       },
-      "id": "bad4c587-31b8-49aa-8b5e-34f6c38c1b6a",
+      "id": "c51bb3a0-11bb-4235-a7bf-31cd0b2bf837",
       "name": "List All S3 Files",
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        10384,
-        26288
+        9360,
+        28368
       ],
       "credentials": {
         "s3": {
@@ -610,13 +610,13 @@
       "parameters": {
         "jsCode": "// Get the current captioned video key from Caption Video node\nlet currentCaptionedKey = null;\ntry {\n  const captionUrl = $('Caption Video').first().json.response;\n  const match = captionUrl.match(/nca-toolkit\\/(.+)$/);\n  if (match) {\n    currentCaptionedKey = match[1];\n  }\n} catch (e) {\n  // Caption Video might not have response\n}\n\n// Get all S3 files and filter for deletion\nconst filesToDelete = [];\nconst items = $input.all();\n\nitems.forEach(item => {\n  const key = item.json.Key;\n  \n  // Skip if this is the current captioned video\n  if (currentCaptionedKey && key === currentCaptionedKey) {\n    return; // Keep this file\n  }\n  \n  // Delete all .mp4 and .mp3 files (old videos and audio)\n  if (key.endsWith('.mp4') || key.endsWith('.mp3')) {\n    filesToDelete.push({\n      json: { key }\n    });\n  }\n});\n\n// Also add the audio folder paths to delete (they should be empty after files are deleted)\nfor (let i = 1; i <= 3; i++) {\n  filesToDelete.push({\n    json: { key: 'audio/elevenlabs_' + i + '/' }\n  });\n}\n\nreturn filesToDelete;"
       },
-      "id": "3bf4eca6-ebab-4bb6-891d-9f26021f73c8",
+      "id": "73c951bc-3b5d-40f4-8d44-df73ea00a91b",
       "name": "Filter Cleanup Files",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        10528,
-        26128
+        9504,
+        28208
       ]
     },
     {
@@ -626,13 +626,13 @@
         "fileKey": "={{ $json.key }}",
         "options": {}
       },
-      "id": "227af110-1041-4ea9-8f1f-2261556502f5",
+      "id": "018acb5f-6547-472b-a9a9-2d81bd769b60",
       "name": "Delete Temp Files",
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        10704,
-        26112
+        9680,
+        28192
       ],
       "credentials": {
         "s3": {
@@ -650,11 +650,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        10352,
-        26032
+        9328,
+        28112
       ],
       "typeVersion": 1,
-      "id": "f89655b9-a59c-4203-af88-1297ee3e669f",
+      "id": "0c60cfb1-7d4e-498b-865a-5a7bb8d4be88",
       "name": "Sticky Note11"
     },
     {
@@ -666,10 +666,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        9776,
-        25088
+        8752,
+        27168
       ],
-      "id": "c65686e3-b609-4150-8e1d-bc155a20bb3d",
+      "id": "b3692c4f-6362-445f-881d-acdc05cd545f",
       "name": "Process Images Sequentially"
     },
     {
@@ -689,10 +689,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        10160,
-        24944
+        9136,
+        27024
       ],
-      "id": "6ef11886-1d7a-4b16-9b1f-4dad0fe2c5e6",
+      "id": "c073fb10-ac7d-4610-8cd1-d1f9d8233614",
       "name": "Edit Fields1"
     },
     {
@@ -706,10 +706,10 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        9840,
-        25488
+        8816,
+        27568
       ],
-      "id": "5c3db64b-19c1-465a-a9a4-bc6f79f016a5",
+      "id": "e02b572c-b489-4dd2-ad71-3268a00b5461",
       "name": "Upload a file",
       "credentials": {
         "s3": {
@@ -730,10 +730,10 @@
       "type": "n8n-nodes-base.s3",
       "typeVersion": 1,
       "position": [
-        9616,
-        24896
+        8592,
+        26976
       ],
-      "id": "15ff459c-9001-4536-9413-d86e86945194",
+      "id": "9869f8ad-198c-4efd-9ca6-68ad11e66802",
       "name": "Upload a file1",
       "credentials": {
         "s3": {
@@ -749,10 +749,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        8512,
-        25360
+        7488,
+        27440
       ],
-      "id": "700c8cb0-9664-49c1-a606-11d7d849a8e9",
+      "id": "377ba4be-0f2b-4b4e-ba32-9b43b222570b",
       "name": "Process Uploaded Images"
     },
     {
@@ -762,10 +762,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        8720,
-        25264
+        7696,
+        27344
       ],
-      "id": "aa488a31-2ae6-43f8-8795-18864b7d0e98",
+      "id": "651b6bef-fc44-4edc-b2b1-1d469675f696",
       "name": "Loop Over Uploaded Images"
     },
     {
@@ -776,15 +776,15 @@
       "type": "n8n-nodes-base.writeBinaryFile",
       "typeVersion": 1,
       "position": [
-        8976,
-        25472
+        7952,
+        27552
       ],
-      "id": "253f997f-5486-48e6-9c49-c7a0da04905f",
+      "id": "cd955a1b-c08e-4074-aa3a-3d16bf2a83f7",
       "name": "Save Image to Filesystem"
     },
     {
       "parameters": {
-        "path": "24b00c63-0b84-402b-8b09-801d213f0f37",
+        "path": "4ac58558-fb88-416b-bee4-d0b868ead133",
         "formTitle": "Story Video Creation",
         "formDescription": "Upload your images and paste your audio script. Each paragraph separated by a blank line will become one audio segment.",
         "formFields": {
@@ -806,12 +806,12 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.1,
       "position": [
-        8352,
-        25360
+        7328,
+        27440
       ],
-      "id": "7ea18c06-61df-4c6d-9ba2-aea51eb1b15e",
+      "id": "1febf93a-d01a-4039-b211-54a040c1c287",
       "name": "Form Trigger",
-      "webhookId": "24b00c63-0b84-402b-8b09-801d213f0f37"
+      "webhookId": "4ac58558-fb88-416b-bee4-d0b868ead133"
     },
     {
       "parameters": {
@@ -821,10 +821,10 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        8352,
-        25136
+        7328,
+        27216
       ],
-      "id": "c1dae98e-f962-414d-8f74-4e9008bec2af",
+      "id": "35d535d1-b793-4cda-9d38-1286304a47d1",
       "name": "Wait for All Images Saved"
     },
     {
@@ -834,10 +834,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9168,
-        25312
+        8144,
+        27392
       ],
-      "id": "1a8c6bc4-2757-4d83-ae2f-c47359c09a19",
+      "id": "aa0c64ea-1b41-4158-ad11-6e2ba1a5a97b",
       "name": "Prepare Audio Items"
     },
     {
@@ -847,11 +847,24 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        9936,
-        24928
+        8912,
+        27008
       ],
-      "id": "b7f3a811-4972-4894-986e-58b0f18a500c",
+      "id": "1e140161-80f3-46f7-8451-6acf746875d9",
       "name": "Add Image Index Back"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        7744,
+        28416
+      ],
+      "id": "3245eef7-c255-4ab2-a46a-f2fff6464a35",
+      "name": "Loop Video Generation"
     }
   ],
   "pinData": {},
@@ -915,7 +928,7 @@
       "main": [
         [
           {
-            "node": "Create Array with Videos",
+            "node": "Loop Video Generation",
             "type": "main",
             "index": 0
           }
@@ -1110,7 +1123,7 @@
       "main": [
         [
           {
-            "node": "Generate Video",
+            "node": "Loop Video Generation",
             "type": "main",
             "index": 0
           }
@@ -1266,6 +1279,24 @@
           }
         ]
       ]
+    },
+    "Loop Video Generation": {
+      "main": [
+        [
+          {
+            "node": "Create Array with Videos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Generate Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": false,
@@ -1273,7 +1304,7 @@
     "executionOrder": "v1",
     "availableInMCP": false
   },
-  "versionId": "5e60fda8-9b06-4987-9530-2d40495210f6",
+  "versionId": "07708eed-3859-4e5e-ba1d-1a4f61e6fc0c",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "3beeed8c7dfb3ed9688eff6f78847fda4abc61df92a5df8f1adf0fdaa07dcee4"
