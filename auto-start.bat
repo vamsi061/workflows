@@ -108,6 +108,22 @@ echo Packages Installed ✓
 echo.
 
 REM ----------------------------------------
+REM Fix Docker Permissions
+REM ----------------------------------------
+
+echo Fixing Docker permissions...
+
+wsl -d Ubuntu-24.04 --exec bash -c "sudo usermod -aG docker vamsi"
+
+echo Restarting WSL for Docker permissions...
+
+wsl --shutdown
+timeout /t 5 >nul
+
+echo Docker permissions fixed ✓
+echo.
+
+REM ----------------------------------------
 REM Start Services
 REM ----------------------------------------
 
