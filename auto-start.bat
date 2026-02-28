@@ -21,7 +21,7 @@ echo Administrator OK ✓
 echo.
 
 REM ----------------------------------------
-REM Install WSL
+REM Check WSL
 REM ----------------------------------------
 
 echo Checking WSL...
@@ -29,25 +29,21 @@ echo Checking WSL...
 wsl --status >nul 2>&1
 
 IF %ERRORLEVEL% NEQ 0 (
-
  echo Installing WSL...
-
  wsl --install
-
- echo Restart PC and run script again
+ echo Restart PC and run again
  pause
  exit /b
-
 )
 
 echo WSL Installed ✓
 echo.
 
 REM ----------------------------------------
-REM Install Ubuntu if Missing
+REM Check Ubuntu
 REM ----------------------------------------
 
-echo Checking Ubuntu-24.04...
+echo Checking Ubuntu...
 
 wsl -l | find "Ubuntu-24.04" >nul
 
@@ -57,15 +53,9 @@ IF %ERRORLEVEL% NEQ 0 (
 
  wsl --install -d Ubuntu-24.04
 
- echo.
- echo Launching Ubuntu first time...
- echo This may take 30 seconds...
-
  timeout /t 10 >nul
 
- wsl -d Ubuntu-24.04 --exec bash -c "echo Ubuntu Ready"
-
- timeout /t 5 >nul
+ wsl -d Ubuntu-24.04 echo Ubuntu Ready
 
 )
 
@@ -111,10 +101,8 @@ REM ----------------------------------------
 
 echo Installing Docker + Nginx...
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-sudo apt update &&
-sudo apt install -y docker.io nginx git
-"
+wsl -d Ubuntu-24.04 --exec bash -c "sudo apt update"
+wsl -d Ubuntu-24.04 --exec bash -c "sudo apt install -y docker.io nginx git"
 
 echo Packages Installed ✓
 echo.
@@ -123,10 +111,10 @@ REM ----------------------------------------
 REM Start Services
 REM ----------------------------------------
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-sudo service docker restart
-sudo service nginx restart
-"
+echo Starting Services...
+
+wsl -d Ubuntu-24.04 --exec bash -c "sudo service docker restart"
+wsl -d Ubuntu-24.04 --exec bash -c "sudo service nginx restart"
 
 echo Services Running ✓
 echo.
@@ -137,12 +125,9 @@ REM ----------------------------------------
 
 echo Starting n8n...
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-mkdir -p ~/.n8n &&
-sudo chown -R 1000:1000 ~/.n8n &&
-docker start n8n 2>/dev/null ||
-docker run -d --name n8n -p 5678:5678 -e N8N_SECURE_COOKIE=false -e N8N_HOST=0.0.0.0 -v ~/.n8n:/home/node/.n8n --restart always n8nio/n8n
-"
+wsl -d Ubuntu-24.04 --exec bash -c "mkdir -p ~/.n8n"
+wsl -d Ubuntu-24.04 --exec bash -c "sudo chown -R 1000:1000 ~/.n8n"
+wsl -d Ubuntu-24.04 --exec bash -c "docker start n8n || docker run -d --name n8n -p 5678:5678 -e N8N_SECURE_COOKIE=false -e N8N_HOST=0.0.0.0 -v ~/.n8n:/home/node/.n8n --restart always n8nio/n8n"
 
 echo n8n Ready ✓
 echo.
@@ -153,12 +138,9 @@ REM ----------------------------------------
 
 echo Starting MinIO...
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-mkdir -p ~/minio-data &&
-sudo chown -R 1000:1000 ~/minio-data &&
-docker start minio 2>/dev/null ||
-docker run -d --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=admin -e MINIO_ROOT_PASSWORD=password -v ~/minio-data:/data --restart always minio/minio server /data --console-address :9001
-"
+wsl -d Ubuntu-24.04 --exec bash -c "mkdir -p ~/minio-data"
+wsl -d Ubuntu-24.04 --exec bash -c "sudo chown -R 1000:1000 ~/minio-data"
+wsl -d Ubuntu-24.04 --exec bash -c "docker start minio || docker run -d --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=admin -e MINIO_ROOT_PASSWORD=password -v ~/minio-data:/data --restart always minio/minio server /data --console-address :9001"
 
 echo MinIO Ready ✓
 echo.
@@ -169,10 +151,7 @@ REM ----------------------------------------
 
 echo Starting NCA Toolkit...
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-docker start nca-toolkit 2>/dev/null ||
-docker run -d --name nca-toolkit -p 8080:8080 -e API_KEY=localdev123 --restart always nca-toolkit-local
-"
+wsl -d Ubuntu-24.04 --exec bash -c "docker start nca-toolkit || docker run -d --name nca-toolkit -p 8080:8080 -e API_KEY=localdev123 --restart always nca-toolkit-local"
 
 echo NCA Toolkit Ready ✓
 echo.
@@ -183,13 +162,7 @@ REM ----------------------------------------
 
 echo Starting Kokoro...
 
-wsl -d Ubuntu-24.04 --exec bash -c "
-docker start kokoro 2>/dev/null ||
-(
-docker pull ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2 &&
-docker run -d --name kokoro -p 8880:8880 --restart always ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2
-)
-"
+wsl -d Ubuntu-24.04 --exec bash -c "docker start kokoro || docker run -d --name kokoro -p 8880:8880 --restart always ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2"
 
 echo Kokoro Ready ✓
 echo.
@@ -214,6 +187,11 @@ echo.
 echo ========================================
 echo SERVER READY ✓
 echo ========================================
+
+echo n8n → http://localhost:5678
+echo MinIO → http://localhost:9001
+echo NCA Toolkit → http://localhost:8080
+echo Kokoro → http://localhost:8880
 
 start http://localhost:5678
 start http://localhost:9001
