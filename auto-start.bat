@@ -1,5 +1,5 @@
 @echo off
-title WSL Docker + Nginx + n8n + MinIO + NCA Toolkit + Kokoro Setup
+title WSL Docker + Nginx + AI Stack Server
 
 echo ========================================
 echo  WSL Docker + Nginx + AI Stack Server
@@ -7,12 +7,12 @@ echo ========================================
 echo.
 
 REM ----------------------------------------
-REM Check Admin
+REM Admin Check
 REM ----------------------------------------
 
 net session >nul 2>&1
 IF %ERRORLEVEL% NEQ 0 (
- echo ERROR: Run as Administrator
+ echo Run as Administrator
  pause
  exit /b
 )
@@ -21,7 +21,7 @@ echo Administrator OK ✓
 echo.
 
 REM ----------------------------------------
-REM Install WSL if Missing
+REM Install WSL
 REM ----------------------------------------
 
 echo Checking WSL...
@@ -32,31 +32,44 @@ IF %ERRORLEVEL% NEQ 0 (
 
  echo Installing WSL...
 
- wsl --install -d Ubuntu-24.04
+ wsl --install
 
- echo.
- echo Restart PC and run script again.
+ echo Restart PC and run script again
  pause
  exit /b
+
 )
 
 echo WSL Installed ✓
 echo.
 
 REM ----------------------------------------
-REM Disable IIS
+REM Install Ubuntu if Missing
 REM ----------------------------------------
 
-sc query W3SVC >nul 2>&1
+echo Checking Ubuntu-24.04...
 
-IF %ERRORLEVEL% EQU 0 (
- net stop W3SVC >nul 2>&1
- sc config W3SVC start= disabled >nul 2>&1
- net stop IISADMIN >nul 2>&1
- sc config IISADMIN start= disabled >nul 2>&1
+wsl -l | find "Ubuntu-24.04" >nul
+
+IF %ERRORLEVEL% NEQ 0 (
+
+ echo Installing Ubuntu-24.04...
+
+ wsl --install -d Ubuntu-24.04
+
+ echo.
+ echo Launching Ubuntu first time...
+ echo This may take 30 seconds...
+
+ timeout /t 10 >nul
+
+ wsl -d Ubuntu-24.04 --exec bash -c "echo Ubuntu Ready"
+
+ timeout /t 5 >nul
+
 )
 
-echo IIS Checked ✓
+echo Ubuntu Ready ✓
 echo.
 
 REM ----------------------------------------
@@ -66,14 +79,13 @@ REM ----------------------------------------
 echo [wsl2]> "%USERPROFILE%\.wslconfig"
 echo localhostForwarding=true>> "%USERPROFILE%\.wslconfig"
 
-echo WSL forwarding enabled ✓
+echo Forwarding Enabled ✓
 echo.
 
 REM ----------------------------------------
 REM Firewall
 REM ----------------------------------------
 
-netsh advfirewall firewall add rule name="WSL80" dir=in action=allow protocol=TCP localport=80 >nul 2>&1
 netsh advfirewall firewall add rule name="WSL5678" dir=in action=allow protocol=TCP localport=5678 >nul 2>&1
 netsh advfirewall firewall add rule name="WSL9000" dir=in action=allow protocol=TCP localport=9000 >nul 2>&1
 netsh advfirewall firewall add rule name="WSL9001" dir=in action=allow protocol=TCP localport=9001 >nul 2>&1
@@ -91,31 +103,6 @@ wsl --shutdown
 timeout /t 5 >nul
 
 echo WSL Restarted ✓
-echo.
-
-REM ----------------------------------------
-REM Install Ubuntu if Missing
-REM ----------------------------------------
-
-echo Checking Ubuntu-24.04...
-
-wsl -d Ubuntu-24.04 echo OK >nul 2>&1
-
-IF %ERRORLEVEL% NEQ 0 (
-
- echo Installing Ubuntu-24.04...
-
- wsl --install -d Ubuntu-24.04
-
- echo.
- echo Ubuntu installed.
- echo Restart PC and run script again.
- pause
- exit /b
-
-)
-
-echo Ubuntu OK ✓
 echo.
 
 REM ----------------------------------------
@@ -145,132 +132,64 @@ echo Services Running ✓
 echo.
 
 REM ----------------------------------------
-REM n8n Setup
+REM n8n
 REM ----------------------------------------
 
-echo Setting up n8n...
+echo Starting n8n...
 
 wsl -d Ubuntu-24.04 --exec bash -c "
 mkdir -p ~/.n8n &&
-sudo chown -R 1000:1000 ~/.n8n
+sudo chown -R 1000:1000 ~/.n8n &&
+docker start n8n 2>/dev/null ||
+docker run -d --name n8n -p 5678:5678 -e N8N_SECURE_COOKIE=false -e N8N_HOST=0.0.0.0 -v ~/.n8n:/home/node/.n8n --restart always n8nio/n8n
 "
-
-wsl -d Ubuntu-24.04 --exec bash -c "docker inspect n8n > /dev/null 2>&1"
-
-IF %ERRORLEVEL% EQU 0 (
-
- echo Starting n8n...
-
- wsl -d Ubuntu-24.04 --exec bash -c "docker start n8n"
-
-) ELSE (
-
- echo Creating n8n...
-
- wsl -d Ubuntu-24.04 --exec bash -c "
-docker run -d ^
---name n8n ^
--p 5678:5678 ^
--e N8N_SECURE_COOKIE=false ^
--e N8N_HOST=0.0.0.0 ^
--v ~/.n8n:/home/node/.n8n ^
---restart always ^
-n8nio/n8n
-"
-
-)
 
 echo n8n Ready ✓
 echo.
 
 REM ----------------------------------------
-REM MinIO Setup
+REM MinIO
 REM ----------------------------------------
 
-echo Setting up MinIO...
+echo Starting MinIO...
 
 wsl -d Ubuntu-24.04 --exec bash -c "
 mkdir -p ~/minio-data &&
-sudo chown -R 1000:1000 ~/minio-data
+sudo chown -R 1000:1000 ~/minio-data &&
+docker start minio 2>/dev/null ||
+docker run -d --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER=admin -e MINIO_ROOT_PASSWORD=password -v ~/minio-data:/data --restart always minio/minio server /data --console-address :9001
 "
-
-wsl -d Ubuntu-24.04 --exec bash -c "docker inspect minio > /dev/null 2>&1"
-
-IF %ERRORLEVEL% EQU 0 (
-
- wsl -d Ubuntu-24.04 --exec bash -c "docker start minio"
-
-) ELSE (
-
- wsl -d Ubuntu-24.04 --exec bash -c "
-docker run -d ^
---name minio ^
--p 9000:9000 ^
--p 9001:9001 ^
--e MINIO_ROOT_USER=admin ^
--e MINIO_ROOT_PASSWORD=password ^
--v ~/minio-data:/data ^
---restart always ^
-minio/minio server /data --console-address :9001
-"
-
-)
 
 echo MinIO Ready ✓
 echo.
 
 REM ----------------------------------------
-REM NCA Toolkit Setup
+REM NCA Toolkit
 REM ----------------------------------------
 
-echo Setting up NCA Toolkit...
+echo Starting NCA Toolkit...
 
-wsl -d Ubuntu-24.04 --exec bash -c "docker inspect nca-toolkit > /dev/null 2>&1"
-
-IF %ERRORLEVEL% EQU 0 (
-
- wsl -d Ubuntu-24.04 --exec bash -c "docker start nca-toolkit"
-
-) ELSE (
-
- wsl -d Ubuntu-24.04 --exec bash -c "
-docker run -d ^
---name nca-toolkit ^
--p 8080:8080 ^
--e API_KEY=localdev123 ^
---restart always ^
-nca-toolkit-local
+wsl -d Ubuntu-24.04 --exec bash -c "
+docker start nca-toolkit 2>/dev/null ||
+docker run -d --name nca-toolkit -p 8080:8080 -e API_KEY=localdev123 --restart always nca-toolkit-local
 "
-
-)
 
 echo NCA Toolkit Ready ✓
 echo.
 
 REM ----------------------------------------
-REM Kokoro Setup
+REM Kokoro
 REM ----------------------------------------
 
-echo Setting up Kokoro...
+echo Starting Kokoro...
 
-wsl -d Ubuntu-24.04 --exec bash -c "docker inspect kokoro > /dev/null 2>&1"
-
-IF %ERRORLEVEL% EQU 0 (
-
- wsl -d Ubuntu-24.04 --exec bash -c "docker start kokoro"
-
-) ELSE (
-
- wsl -d Ubuntu-24.04 --exec bash -c "
+wsl -d Ubuntu-24.04 --exec bash -c "
+docker start kokoro 2>/dev/null ||
+(
 docker pull ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2 &&
-docker run -d ^
---name kokoro ^
--p 8880:8880 ^
---restart always ^
-ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2
-"
-
+docker run -d --name kokoro -p 8880:8880 --restart always ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2
 )
+"
 
 echo Kokoro Ready ✓
 echo.
@@ -296,7 +215,6 @@ echo ========================================
 echo SERVER READY ✓
 echo ========================================
 
-start http://localhost
 start http://localhost:5678
 start http://localhost:9001
 start http://localhost:8080
